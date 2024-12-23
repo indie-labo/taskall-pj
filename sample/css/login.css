@@ -34,10 +34,16 @@ img {
   width: 100%;
 }
 
+input, input[type="text" i] {
+  margin: 0;
+  padding: 0;
+  padding-block: 0;
+  padding-inline: 0;
+}
+
 /* main
 =========================================== */
 .pageLogin {
-  min-width: 550px;
   margin: 50px 100px;
 }
 
@@ -46,42 +52,50 @@ img {
 }
 
 .pageLogin > .contentsBg {
+  width: 940px;
   padding: 20px;
   background-color: #F8F8F8;
 }
 
 .pageLogin > .contentsBg > .contents {
+  display: flex;
   padding: 80px;
   background-color: #fff;
 }
 
-.pageLogin > .contentsBg > .contents > .layout {
-  width: 300px;
-}
-
-.pageLogin > .contentsBg > .contents > .layout .btn:hover {
+.pageLogin > .contentsBg > .contents .btn:hover {
   cursor: pointer;
   opacity: 0.6;
 }
 
-.pageLogin > .contentsBg > .contents > .layout .inputCheck:hover {
+.pageLogin > .contentsBg > .contents .inputCheck:hover {
   cursor: pointer;
 }
 
+/* ------------------------
+  ログイン
+/* ---------------------- */
+.pageLogin > .contentsBg > .contents > .login {
+  width: 300px;
+  margin-right: 80px;
+  padding-right: 100px;
+  border-right: 2px solid #EAEAEA;
+}
+
 /* お客様ID */
-/* ---------------------------------- */
-.pageLogin > .contentsBg > .contents > .layout > .loginId {
+/* ----------------------- */
+.pageLogin > .contentsBg > .contents > .login > .loginId {
   margin-bottom: 50px;
 }
 
-.pageLogin > .contentsBg > .contents > .layout > .loginId > .labelId {
+.pageLogin > .contentsBg > .contents > .login > .loginId > .labelId {
   display: block;
   margin-bottom: 10px;
   font-size: 20px;
   font-weight: bold;
 }
 
-.pageLogin > .contentsBg > .contents > .layout > .loginId > .inputId {
+.pageLogin > .contentsBg > .contents > .login > .loginId > .inputId {
   display: block;
   width: 100%;
   margin-bottom: 5px;
@@ -91,23 +105,23 @@ img {
   border: 1px solid #DEDEDE;
 }
 
-.pageLogin > .contentsBg > .contents > .layout > .loginId > .remarks {
+.pageLogin > .contentsBg > .contents > .login > .loginId > .remarks {
   font-size: 14px;
 }
 
 /* パスワード */
-/* ---------------------------------- */
-.pageLogin > .contentsBg > .contents > .layout > .loginPass {
+/* ----------------------- */
+.pageLogin > .contentsBg > .contents > .login > .loginPass {
   margin-bottom: 50px;
 }
 
-.pageLogin > .contentsBg > .contents > .layout > .loginPass > .labelPass {
+.pageLogin > .contentsBg > .contents > .login > .loginPass > .labelPass {
   display: block;
   font-size: 20px;
   font-weight: bold;
 }
 
-.pageLogin > .contentsBg > .contents > .layout > .loginPass > .inputPass {
+.pageLogin > .contentsBg > .contents > .login > .loginPass > .inputPass {
   display: block;
   width: 100%;
   margin-bottom: 5px;
@@ -118,13 +132,13 @@ img {
 }
 
 /* ログインボタン */
-/* ---------------------------------- */
-.pageLogin > .contentsBg > .contents > .layout > .loginBtn {
+/* ----------------------- */
+.pageLogin > .contentsBg > .contents > .login > .loginBtn {
   margin-bottom: 30px;
   text-align: center;
 }
 
-.pageLogin > .contentsBg > .contents > .layout > .loginBtn > .btn {
+.pageLogin > .contentsBg > .contents > .login > .loginBtn > .btn {
   position: relative;
   display: flex;
   justify-content: center;
@@ -137,7 +151,7 @@ img {
   background-color: #CC0100;
 }
 
-.pageLogin > .contentsBg > .contents > .layout > .loginBtn > .btn::after {
+.pageLogin > .contentsBg > .contents > .login > .loginBtn > .btn::after {
   content: "";
   position: absolute;
   right: 20px;
@@ -150,8 +164,8 @@ img {
 }
 
 /* 新規登録 */
-/* ---------------------------------- */
-.pageLogin > .contentsBg > .contents > .layout > .signUp > .btn {
+/* ----------------------- */
+.pageLogin > .contentsBg > .contents > .login > .signUp > .btn {
   position: relative;
   display: flex;
   justify-content: center;
@@ -162,4 +176,53 @@ img {
   font-size: 18px;
   color: #CC0100;
   border: 1px solid #CC0100;
+}
+
+/* ------------------------
+  ほかのアカウントでログイン
+/* ---------------------- */
+.pageLogin > .contentsBg > .contents > .loginOther {
+  width: 300px;
+}
+
+/* Google */
+/* ----------------------- */
+.pageLogin > .contentsBg > .contents > .loginOther > .headding {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.pageLogin > .contentsBg > .contents > .loginOther > .google {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.pageLogin > .contentsBg > .contents > .loginOther > .google > .iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border: 1px solid #4284F3;
+}
+
+.pageLogin > .contentsBg > .contents > .loginOther > .google > .iconWrap > .icon {
+  width: 50%;
+}
+
+.pageLogin > .contentsBg > .contents > .loginOther > .google > .btnWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 45px;
+  background-color: #4284F3;
+  border: 1px solid #4284F3;
+}
+
+.pageLogin > .contentsBg > .contents > .loginOther > .google > .btnWrap > .btn {
+  font-size: 18px;
+  color: #fff;
 }
