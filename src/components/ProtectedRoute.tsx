@@ -5,9 +5,14 @@ const ProtectedRoute = (props: any) => {
   // let auth={'token': false}
   const location = useLocation();
 
+  if (!props.isAuthenticated) {
+    return (
+      <Navigate to="/login" state={{ from: location }} replace />
+    )
+  }
+
   return (
-    props.isAuthenticated ? 
-    <Outlet /> : <Navigate to="/login" state={{ from: location }} />
+    <Outlet />
   )
 }
 export default ProtectedRoute;
