@@ -1,24 +1,39 @@
-import { useEffect, useState } from 'react'
-import { auth } from './lib/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
-import Top from "@/components/Top";
-import Login from "@/components/Login";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/lib/firebase";
+import { login } from "@/features/userSlice";
+import LoginPage from "@/pages/LoginPage";
+import Home from "@/components/Home";
+import Dashboard from '@/pages/Dashboard';
+import AuthRoute from "@/routes/AuthRoute";
 
-function App() {
-  const [user, setUser] = useState<string|undefined>("");
+const App = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const onLogin = (role: string) => dispatch(login(role));
 
   useEffect(() => {
-    return onAuthStateChanged(auth, (user) => {
-      console.log(user);
-      setUser(user?.uid);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        onLogin("user");
+        navigate('/');
+      }
     });
-  }, []);
+    return unsubscribe;
+  }, [dispatch]);
 
   return (
-    <>
-      {user ? (<Login />) : (<Top />)}
-    </>
-  )
-}
+    <Routes>
+      <Route element={ <AuthRoute to="/login" />} >
+        <Route path="/" element={<Dashboard />} >
+          <Route path="home" element={<Home />} />
+        </Route>
+      </Route>
+      <Route path="/login" element={<LoginPage />} />
+    </Routes>
+  );
+};
 
-export default App
+export default App;
