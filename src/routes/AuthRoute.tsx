@@ -11,8 +11,9 @@ const AuthRoute = (props: AuthProps) => {
   const location = useLocation();
   const user: UserState = useSelector(selectUser);
   const { to } = props;
-  
+  console.log(location);
   if (!user.isLogin) {
+    console.log("tuika")
     return <Navigate to={to} state={{ from: location.pathname }} replace />
   }
 
