@@ -1,13 +1,20 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _index = require("./common/index");
+require("./App.css");
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-import {Sidebar, Header, MainView} from './common/index'
-import './App.css'
 
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
+    /*#__PURE__*/
     // <>
     //   <div>
     //     <a href="https://vite.dev" target="_blank">
@@ -30,16 +37,11 @@ function App() {
     //     Click on the Vite and React logos to learn more
     //   </p>
     // </>
-
-    <div className='lCommon'>
-      <Sidebar />
-
-      <div className='lMainWrap'>
-        <Header />
-        <MainView />
-      </div>
-    </div>
-  )
+    React.createElement("div", {
+      className: "lCommon"
+    }, /*#__PURE__*/React.createElement(_index.Sidebar, null), /*#__PURE__*/React.createElement("div", {
+      className: "lMainWrap"
+    }, /*#__PURE__*/React.createElement(_index.Header, null), /*#__PURE__*/React.createElement(_index.MainView, null)))
+  );
 }
-
-export default App
+var _default = exports.default = App;
