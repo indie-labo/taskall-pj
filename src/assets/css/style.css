@@ -33,6 +33,15 @@ ul {
   padding: 0;
 }
 
+button {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+button:focus {
+  outline: none;
+}
+
 .lCommon {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -62,8 +71,18 @@ ul {
   padding: 0;
   margin: 0;
 }
+.lCommon .lSide__main__list__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 .lCommon .lSide__main__list__item:hover {
   background-color: #33353c;
+}
+.lCommon .lSide__main__list__item img {
+  display: block;
+  width: 16px;
+  height: 16px;
 }
 .lCommon .lSide__main__list__item__text {
   font-size: 14px;
@@ -74,10 +93,6 @@ ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-image: url(../../img/common/l-side__icon__calendar.png);
-  background-size: 16px 16px;
-  background-position: 10px center;
-  background-repeat: no-repeat;
   width: 100%;
   color: #fff;
 }

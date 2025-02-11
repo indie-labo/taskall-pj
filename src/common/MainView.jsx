@@ -1,10 +1,22 @@
+import {TableView, KanbanView} from '../component/index'
 import '../assets/css/style.css'
 
-const MainView = () => {
+const MainView = (props) => {
+  const renderView = () => {
+    switch (props.view) {
+      case "table":
+        return <TableView />;
+      case "kanban":
+        return <KanbanView />;
+      default:
+        return <p>hoge</p>;
+    }
+  };
+
   return(
     <main className="lMainView">
       <div className="lMainView__contents">
-        <p>hoge</p>
+        {renderView()}
       </div>
     </main>
   );

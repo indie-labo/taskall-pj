@@ -41,3 +41,13 @@ img {
 ul {
   padding: 0;
 }
+
+button {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+
+  &:focus {
+    outline: none;
+  }
+}

@@ -25,8 +25,16 @@
         margin: 0;
   
         &__item {
+          display: flex;
+
           &:hover {
             background-color: #33353c;
+          }
+
+          img {
+            display: block;
+            width: 16px;
+            height: 16px;
           }
   
           &__text {
@@ -34,10 +42,10 @@
             padding: 10px 0 10px 40px;
             display: flex;
             align-items: center;
-            background-image: url(../../img/common/l-side__icon__calendar.png);
-            background-size: 16px 16px;
-            background-position: 10px center;
-            background-repeat: no-repeat;
+            // background-image: url(../../img/common/l-side__icon__calendar.png);
+            // background-size: 16px 16px;
+            // background-position: 10px center;
+            // background-repeat: no-repeat;
             width: 100%;
             color: #fff;
   
