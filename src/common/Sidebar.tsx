@@ -1,6 +1,11 @@
-import '../assets/css/style.css'
+import '../assets/css/style.css';
 
-const Sidebar = (props) => {
+interface SidebarProps {
+  setView: (view: string) => void;
+  activeView: string;
+}
+
+const Sidebar: React.FC<SidebarProps> = (props) => {
   return(
     <aside className="lSide">
       <div className="lSide__heading">ADMIN APP</div>

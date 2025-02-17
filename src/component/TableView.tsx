@@ -1,4 +1,4 @@
-const TableView = () => {
+const TableView: React.FC = () => {
   return(
     <p>テーブルビュー</p>
   );

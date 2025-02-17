@@ -1,7 +1,11 @@
-import {TableView, KanbanView} from '../component/index'
-import '../assets/css/style.css'
+import {TableView, KanbanView} from '../component/index.ts';
+import '../assets/css/style.css';
 
-const MainView = (props) => {
+interface MainViewProps {
+  view: string;
+}
+
+const MainView: React.FC<MainViewProps> = (props) => {
   const renderView = () => {
     switch (props.view) {
       case "table":
@@ -9,7 +13,7 @@ const MainView = (props) => {
       case "kanban":
         return <KanbanView />;
       default:
-        return <p>hoge</p>;
+        return <p>test</p>;
     }
   };
 

@@ -1,10 +1,10 @@
-import '../assets/css/style.css'
+import '../assets/css/style.css';
 import headerLogo from '../assets/img/common/l-header__logo.png';
 import headerNotification from '../assets/img/common/l-header__notification.png';
 import headerSetting from '../assets/img/common/l-header__setting.png';
 import headerProfile from '../assets/img/common/l-header__profile.png';
 
-const Header = () => {
+const Header: React.FC = () => {
   return(
     <header className="lHeader">
       <div className="lHeader__logo">
