@@ -1,11 +1,11 @@
 import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import {Sidebar, Header, MainView} from './common/index.ts'
 import './App.css'
 
 function App() {
   const [view, setView] = useState("");
+
+  console.log("test");
 
   return (
     <div className='lCommon'>

@@ -34,6 +34,7 @@ ul {
 }
 
 button {
+  padding: 0;
   background-color: transparent;
   border: none;
   border-radius: 0;
@@ -195,6 +196,46 @@ table {
 .p_tableView {
   background-color: #EBEDF0;
 }
+.p_tableView__sideView {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  opacity: 0;
+}
+.p_tableView__sideView.open {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  opacity: 1;
+}
+.p_tableView__sideView__smoke {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.2;
+}
+.p_tableView__sideView__contents {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  padding: 20px;
+  border: 5px solid #EBEDF0;
+  background-color: #fff;
+}
+.p_tableView__sideView__contents .iconClose {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
 .p_tableView__heading {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -254,44 +295,21 @@ table {
   border-bottom: 1px solid #EBEDF0;
 }
 .p_tableView__list__title tr .task {
-  width: 30%;
+  width: 25%;
 }
 .p_tableView__list__title tr .date {
-  width: 15%;
+  width: 10%;
 }
-.p_tableView__list__title tr .tag {
+.p_tableView__list__title tr .name {
   width: 10%;
 }
 .p_tableView__list__title tr .status {
   width: 10%;
 }
+.p_tableView__list__title tr .tag {
+  width: 10%;
+}
 .p_tableView__list__title tr .notes {
-  width: 100%;
-}
-.p_tableView__list__title ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.p_tableView__list__title ul li {
-  padding: 5px;
-  text-align: left;
-  border-bottom: 1px solid #EBEDF0;
-  list-style: none;
-}
-.p_tableView__list__title ul .task {
-  width: 30%;
-}
-.p_tableView__list__title ul .date {
-  width: 15%;
-}
-.p_tableView__list__title ul .tag {
-  width: 10%;
-}
-.p_tableView__list__title ul .status {
-  width: 10%;
-}
-.p_tableView__list__title ul .notes {
   width: 100%;
 }
 .p_tableView__list__contents {

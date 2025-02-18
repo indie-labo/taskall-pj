@@ -1,5 +1,5 @@
 // エントリーポイント（common）
 // ==========================
-export { default as Sidebar } from './Sidebar';
-export { default as Header } from './Header';
-export { default as MainView } from './MainView';
+export { default as Sidebar } from './Sidebar.tsx';
+export { default as Header } from './Header.tsx';
+export { default as MainView } from './MainView.tsx';

@@ -1,6 +1,51 @@
 .p_tableView {
   background-color: #EBEDF0;
 
+  // モーダル(SideViewのデザイン)
+  // ------------------------------------------------
+  &__sideView {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+
+    &.open {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    &__smoke {
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      opacity: .2;
+    }
+
+    &__contents {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 100%;
+      padding: 20px;
+      border: 5px solid #EBEDF0;
+      background-color: #fff;
+
+      .iconClose {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    
+  }
+  // ------------------------------------------------
+
   &__heading {
     display: flex;
     align-items: center;
@@ -57,41 +102,18 @@
           border-bottom: 1px solid #EBEDF0;
         }
         .task {
-          width: 30%;
+          width: 25%;
         }
         .date {
-          width: 15%;
+          width: 10%;
         }
-        .tag {
+        .name {
           width: 10%;
         }
         .status {
           width: 10%;
         }
-        .notes {
-          width: 100%;
-        }
-      }
-
-      ul {
-        display: flex;
-
-        li {
-          padding: 5px;
-          text-align: left;
-          border-bottom: 1px solid #EBEDF0;
-          list-style: none;
-        }
-        .task {
-          width: 30%;
-        }
-        .date {
-          width: 15%;
-        }
         .tag {
-          width: 10%;
-        }
-        .status {
           width: 10%;
         }
         .notes {

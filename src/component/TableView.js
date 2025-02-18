@@ -5,64 +5,92 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 require("../assets/css/style.css");
+var _react = require("react");
+var _index = require("./index.ts");
 var _icon_search = _interopRequireDefault(require("../assets/img/icon_search.png"));
 var _icon_reload = _interopRequireDefault(require("../assets/img/icon_reload.png"));
 var _icon_plus = _interopRequireDefault(require("../assets/img/icon_plus.png"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var TableView = function TableView() {
+  var _useState = (0, _react.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    isSideViewOpen = _useState2[0],
+    setIsSideViewOpen = _useState2[1];
+  var toggleSideView = function toggleSideView() {
+    setIsSideViewOpen(function (prev) {
+      return !prev;
+    });
+  };
+
   //一旦json形式でデータ定義。最終的にはDBからデータ取得してくるようにする。
   var data = [{
-    taskName: "test1",
+    task: "test1",
     date: "2025/01/01",
-    tag: "work",
+    name: "AAA",
     status: "進行中",
-    notes: "test1test1test1"
+    tag: "work",
+    notes: "test test test"
   }, {
-    taskName: "test2",
+    task: "test2",
     date: "2025/02/01",
-    tag: "Private",
+    name: "BBB",
     status: "完了",
-    notes: "test2test2test2"
+    tag: "private",
+    notes: "TEST TEST TEST"
   }, {
-    taskName: "test3",
+    task: "test3",
     date: "2025/03/01",
-    tag: "work",
-    status: "完了",
-    notes: "test3test3test3"
+    name: "CCC",
+    status: "未着手",
+    tag: "other",
+    notes: "**************"
   }, {
-    taskName: "test4",
+    task: "test4",
     date: "2025/04/01",
-    tag: "Private",
-    status: "保留",
-    notes: "test4test4test4"
+    name: "aaa",
+    status: "アーカイブ",
+    tag: "other",
+    notes: "11111111111"
   }, {
-    taskName: "test5",
+    task: "test5",
     date: "2025/05/01",
-    tag: "work",
+    name: "bbb",
     status: "進行中",
-    notes: "test5test5test5"
+    tag: "work",
+    notes: "aaaaaaaaaaaaaa"
   }];
   return /*#__PURE__*/React.createElement("div", {
     className: "p_tableView"
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(_index.TableSideView, {
+    isOpen: isSideViewOpen,
+    onClose: toggleSideView
+  }), /*#__PURE__*/React.createElement("div", {
     className: "p_tableView__heading"
   }, /*#__PURE__*/React.createElement("p", {
     className: "p_tableView__heading__title"
   }, "All List"), /*#__PURE__*/React.createElement("div", {
     className: "p_tableView__heading__iconWrap"
-  }, /*#__PURE__*/React.createElement("img", {
+  }, /*#__PURE__*/React.createElement("button", null, /*#__PURE__*/React.createElement("img", {
     className: "iconSearch",
     src: _icon_search.default,
     alt: ""
-  }), /*#__PURE__*/React.createElement("img", {
+  })), /*#__PURE__*/React.createElement("button", null, /*#__PURE__*/React.createElement("img", {
     className: "iconReload",
     src: _icon_reload.default,
     alt: ""
-  }), /*#__PURE__*/React.createElement("img", {
+  })), /*#__PURE__*/React.createElement("button", {
+    onClick: toggleSideView
+  }, /*#__PURE__*/React.createElement("img", {
     className: "iconPlus",
     src: _icon_plus.default,
     alt: ""
-  }))), /*#__PURE__*/React.createElement("table", {
+  })))), /*#__PURE__*/React.createElement("table", {
     className: "p_tableView__list"
   }, /*#__PURE__*/React.createElement("thead", {
     className: "p_tableView__list__title"
@@ -71,17 +99,19 @@ var TableView = function TableView() {
   }, "\u30BF\u30B9\u30AF\u540D"), /*#__PURE__*/React.createElement("th", {
     className: "date"
   }, "\u65E5\u4ED8"), /*#__PURE__*/React.createElement("th", {
-    className: "tag"
-  }, "\u30BF\u30B0"), /*#__PURE__*/React.createElement("th", {
+    className: "name"
+  }, "\u62C5\u5F53\u8005"), /*#__PURE__*/React.createElement("th", {
     className: "status"
   }, "\u30B9\u30C6\u30FC\u30BF\u30B9"), /*#__PURE__*/React.createElement("th", {
+    className: "tag"
+  }, "\u30BF\u30B0"), /*#__PURE__*/React.createElement("th", {
     className: "notes"
   }, "Notes"))), /*#__PURE__*/React.createElement("tbody", {
     className: "p_tableView__list__contents"
   }, data.map(function (item, index) {
     return /*#__PURE__*/React.createElement("tr", {
       key: index.toString()
-    }, /*#__PURE__*/React.createElement("td", null, item.taskName), /*#__PURE__*/React.createElement("td", null, item.date), /*#__PURE__*/React.createElement("td", null, item.tag), /*#__PURE__*/React.createElement("td", null, item.status), /*#__PURE__*/React.createElement("td", null, item.notes));
+    }, /*#__PURE__*/React.createElement("td", null, item.task), /*#__PURE__*/React.createElement("td", null, item.date), /*#__PURE__*/React.createElement("td", null, item.name), /*#__PURE__*/React.createElement("td", null, item.status), /*#__PURE__*/React.createElement("td", null, item.tag), /*#__PURE__*/React.createElement("td", null, item.notes));
   }))));
 };
 var _default = exports.default = TableView;
