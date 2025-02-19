@@ -5,27 +5,43 @@ import iconSearch from '../assets/img/icon_search.png';
 import iconReload from '../assets/img/icon_reload.png';
 import iconPlus from '../assets/img/icon_plus.png';
 
+interface AddTask {
+  task: string;
+  date: string;
+  name: string;
+  status: string;
+  tag: string;
+  notes: string;
+}
+
 const TableView: React.FC = () => {
   const [isSideViewOpen, setIsSideViewOpen] = useState(false);
 
+  // 一旦json形式でデータ定義。最終的にはDBからデータ取得してくるようにする。
+  const [data, setData] = useState<AddTask[]>(
+    [
+      { task: "test1", date: "2025/01/01", name: "AAA", status: "進行中", tag: "work", notes: "test test test" },
+      { task: "test2", date: "2025/02/01", name: "BBB", status: "完了", tag: "private", notes: "TEST TEST TEST" },
+      { task: "test3", date: "2025/03/01", name: "CCC", status: "未着手", tag: "other", notes: "**************" },
+      { task: "test4", date: "2025/04/01", name: "aaa", status: "アーカイブ", tag: "other", notes: "11111111111" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+    ]
+  );
+
+  // サイドビューの開閉
   const toggleSideView = () => {
     setIsSideViewOpen((prev) => !prev);
   };
 
-
-  //一旦json形式でデータ定義。最終的にはDBからデータ取得してくるようにする。
-  const data = [
-    { task: "test1", date: "2025/01/01", name: "AAA", status: "進行中", tag: "work", notes: "test test test" },
-    { task: "test2", date: "2025/02/01", name: "BBB", status: "完了", tag: "private", notes: "TEST TEST TEST" },
-    { task: "test3", date: "2025/03/01", name: "CCC", status: "未着手", tag: "other", notes: "**************" },
-    { task: "test4", date: "2025/04/01", name: "aaa", status: "アーカイブ", tag: "other", notes: "11111111111" },
-    { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
-  ];
+  // タスクを追加する
+  const handleAddTask = (newTask: AddTask) => {
+    setData((prevData) => [...prevData, newTask]);
+  }
 
   return(
     <div className="p_tableView">
       {/* モーダル(TableSideView) */}
-      <TableSideView isOpen = {isSideViewOpen} onClose={toggleSideView} />
+      <TableSideView isOpen = {isSideViewOpen} onClose={toggleSideView} onAddTask={handleAddTask} />
 
       <div className="p_tableView__heading">
         <p className="p_tableView__heading__title">All List</p>

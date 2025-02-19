@@ -11,6 +11,10 @@ var _icon_search = _interopRequireDefault(require("../assets/img/icon_search.png
 var _icon_reload = _interopRequireDefault(require("../assets/img/icon_reload.png"));
 var _icon_plus = _interopRequireDefault(require("../assets/img/icon_plus.png"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -22,54 +26,67 @@ var TableView = function TableView() {
     _useState2 = _slicedToArray(_useState, 2),
     isSideViewOpen = _useState2[0],
     setIsSideViewOpen = _useState2[1];
+
+  // 一旦json形式でデータ定義。最終的にはDBからデータ取得してくるようにする。
+  var _useState3 = (0, _react.useState)([{
+      task: "test1",
+      date: "2025/01/01",
+      name: "AAA",
+      status: "進行中",
+      tag: "work",
+      notes: "test test test"
+    }, {
+      task: "test2",
+      date: "2025/02/01",
+      name: "BBB",
+      status: "完了",
+      tag: "private",
+      notes: "TEST TEST TEST"
+    }, {
+      task: "test3",
+      date: "2025/03/01",
+      name: "CCC",
+      status: "未着手",
+      tag: "other",
+      notes: "**************"
+    }, {
+      task: "test4",
+      date: "2025/04/01",
+      name: "aaa",
+      status: "アーカイブ",
+      tag: "other",
+      notes: "11111111111"
+    }, {
+      task: "test5",
+      date: "2025/05/01",
+      name: "bbb",
+      status: "進行中",
+      tag: "work",
+      notes: "aaaaaaaaaaaaaa"
+    }]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    data = _useState4[0],
+    setData = _useState4[1];
+
+  // サイドビューの開閉
   var toggleSideView = function toggleSideView() {
     setIsSideViewOpen(function (prev) {
       return !prev;
     });
   };
 
-  //一旦json形式でデータ定義。最終的にはDBからデータ取得してくるようにする。
-  var data = [{
-    task: "test1",
-    date: "2025/01/01",
-    name: "AAA",
-    status: "進行中",
-    tag: "work",
-    notes: "test test test"
-  }, {
-    task: "test2",
-    date: "2025/02/01",
-    name: "BBB",
-    status: "完了",
-    tag: "private",
-    notes: "TEST TEST TEST"
-  }, {
-    task: "test3",
-    date: "2025/03/01",
-    name: "CCC",
-    status: "未着手",
-    tag: "other",
-    notes: "**************"
-  }, {
-    task: "test4",
-    date: "2025/04/01",
-    name: "aaa",
-    status: "アーカイブ",
-    tag: "other",
-    notes: "11111111111"
-  }, {
-    task: "test5",
-    date: "2025/05/01",
-    name: "bbb",
-    status: "進行中",
-    tag: "work",
-    notes: "aaaaaaaaaaaaaa"
-  }];
+  // タスクを追加する
+  var handleAddTask = function handleAddTask(newTask) {
+    setData(function (prevData) {
+      return [].concat(_toConsumableArray(prevData), [newTask]);
+    });
+  };
   return /*#__PURE__*/React.createElement("div", {
     className: "p_tableView"
   }, /*#__PURE__*/React.createElement(_index.TableSideView, {
     isOpen: isSideViewOpen,
-    onClose: toggleSideView
+    onClose: toggleSideView,
+    onAddTask: handleAddTask
   }), /*#__PURE__*/React.createElement("div", {
     className: "p_tableView__heading"
   }, /*#__PURE__*/React.createElement("p", {
