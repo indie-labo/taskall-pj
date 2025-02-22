@@ -1,4 +1,5 @@
 .p_tableView {
+  display: flex;
   background-color: #EBEDF0;
 
   // モーダル(SideViewのデザイン)
@@ -94,97 +95,71 @@
   }
   // ------------------------------------------------
 
-  &__heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 40px;
-    padding: 10px 30px;
-    background-color: #fff;
-    border-bottom: 2px solid #EBEDF0;
+  &__taskWrap {
+    width: 80%;
+    margin-right: 10px;
 
-    &__title {
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    &__iconWrap {
+    &__heading {
       display: flex;
       align-items: center;
-
-      .iconSearch {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        margin-right: 20px;
-      }
-
-      .iconReload {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        margin-right: 20px;
-      }
-
-      .iconPlus {
-        display: inline-block;
-        width: 15px;
-        height: 15px;
-      }
-    }
-  }
-
-  &__list {
-    width: 100%;
-    padding: 10px 30px;
-    background-color: #fff;
-
-    
-    &__theadContents {
-      width: 100%;
-
-      &__title {
-        font-size: 14px;
-        font-weight: 500;
+      justify-content: space-between;
+      height: 40px;
+      padding: 10px 30px;
+      background-color: #fff;
+      border-bottom: 2px solid #EBEDF0;
   
-        tr {
-          th {
-            padding: 5px;
-            text-align: left;
-            border-bottom: 1px solid #EBEDF0;
-          }
-          .task {
-            width: 25%;
-          }
-          .date {
-            width: 12%;
-          }
-          .name {
-            width: 12%;
-          }
-          .status {
-            width: 12%;
-          }
-          .tag {
-            width: 8%;
-          }
-          .notes {
-            width: 100%;
-          }
+      &__title {
+        font-size: 16px;
+        font-weight: bold;
+      }
+  
+      &__iconWrap {
+        display: flex;
+        align-items: center;
+  
+        .iconSearch {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          margin-right: 20px;
+        }
+  
+        .iconReload {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          margin-right: 20px;
+        }
+  
+        .iconPlus {
+          display: inline-block;
+          width: 15px;
+          height: 15px;
         }
       }
     }
-
-    &__tbodyContents {
-      width: 100%;
-
-      &__contents {
-        font-size: 14px;
   
-        tr {
-          &:last-of-type {
-            td {
-              border-bottom: none;
+    &__list {
+      width: 100%;
+      padding: 10px 30px;
+      background-color: #fff;
+  
+      
+      &__theadContents {
+        width: 100%;
+  
+        &__title {
+          font-size: 14px;
+          font-weight: 500;
+    
+          tr {
+            th {
+              padding: 5px;
+              text-align: left;
+              border-bottom: 1px solid #EBEDF0;
+            }
+            .blankSpace {
+              width: 3%;
             }
             .task {
               width: 25%;
@@ -205,26 +180,112 @@
               width: 100%;
             }
           }
+        }
+      }
   
-          &:hover {
-            // cursor: pointer;
-            background-color: #f5f5f5;
-            opacity: .7;
-            font-weight: 500;
-          }
+      &__tbodyContents {
+        width: 100%;
   
-          td {
-            padding: 5px;
-            text-align: left;
-            border-bottom: 1px solid #EBEDF0;
+        &__contents {
+          font-size: 14px;
+    
+          tr {
+            &:last-of-type {
+              td {
+                border-bottom: none;
+              }
+            }
+    
+            &:hover {
+              // cursor: pointer;
+              background-color: #f5f5f5;
+              opacity: .7;
+              font-weight: 500;
+            }
+    
+            td {
+              padding: 5px;
+              text-align: left;
+              border-bottom: 1px solid #EBEDF0;
+            }
+            .btnArea {
+              width: 3%;
+              .btnDelete {
+                width: 10px;
+              }
+            }
+            .task {
+              width: 25%;
+            }
+            .date {
+              width: 12%;
+            }
+            .name {
+              width: 12%;
+            }
+            .status {
+              width: 12%;
+            }
+            .tag {
+              width: 8%;
+            }
+            .notes {
+              width: 100%;
+            }
           }
+        }
+      }
+  
+      &__listOverflow {
+        max-height: calc(100vh - 192px); //他要素の高さ変える場合は減算する値の修正必要 ＊別途指定方法考え直す
+        overflow-y: auto;
+      }
+    }
+  }
+
+  &__detailWrap {
+    width: 20%;
+    background-color: #fff;
+
+    &__heading {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 40px;
+      padding: 10px 15px;
+      background-color: #fff;
+      border-bottom: 2px solid #EBEDF0;
+  
+      &__btnWrap {
+        display: flex;
+        align-items: center;
+   
+        .btnEllipsis {
+          width: 15px;
+          height: 15px;
         }
       }
     }
 
-    &__listOverflow {
-      max-height: calc(100vh - 192px); //他要素の高さ変える場合は減算する値の修正必要 ＊別途指定方法考え直す
-      overflow-y: auto;
+    &__contents {
+      padding: 10px;
+      font-size: 14px;
+      background-color: #fff;
+
+      p {
+        margin-bottom: 20px;
+      }
+
+      .btnDelete {
+        width: 80px;
+        margin-right: 15px;
+        padding: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #047591;
+        border-radius: 5px;
+      }
     }
   }
 }

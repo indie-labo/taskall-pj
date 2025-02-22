@@ -140,25 +140,35 @@ var TableSideView = function TableSideView(props) {
     className: "block"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "item"
-  }, "*\u30B9\u30C6\u30FC\u30BF\u30B9"), /*#__PURE__*/_react.default.createElement("input", {
+  }, "*\u30B9\u30C6\u30FC\u30BF\u30B9"), /*#__PURE__*/_react.default.createElement("select", {
     className: "field",
-    type: "text",
     value: status,
     onChange: function onChange(e) {
       return setStatus(e.target.value);
     }
-  })), /*#__PURE__*/_react.default.createElement("li", {
+  }, /*#__PURE__*/_react.default.createElement("option", {
+    value: "\u672A\u7740\u624B"
+  }, "\u672A\u7740\u624B"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "\u9032\u884C\u4E2D"
+  }, "\u9032\u884C\u4E2D"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "\u5B8C\u4E86"
+  }, "\u5B8C\u4E86"))), /*#__PURE__*/_react.default.createElement("li", {
     className: "block"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "item"
-  }, "*\u30BF\u30B0"), /*#__PURE__*/_react.default.createElement("input", {
+  }, "*\u30BF\u30B0"), /*#__PURE__*/_react.default.createElement("select", {
     className: "field",
-    type: "text",
     value: tag,
     onChange: function onChange(e) {
       return setTag(e.target.value);
     }
-  })), /*#__PURE__*/_react.default.createElement("li", {
+  }, /*#__PURE__*/_react.default.createElement("option", {
+    value: "\u672A\u7740\u624B"
+  }, "work"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "\u9032\u884C\u4E2D"
+  }, "private"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "\u5B8C\u4E86"
+  }, "other"))), /*#__PURE__*/_react.default.createElement("li", {
     className: "block"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "item"

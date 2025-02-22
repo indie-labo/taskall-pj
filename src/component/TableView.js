@@ -10,6 +10,8 @@ var _index = require("./index.ts");
 var _icon_search = _interopRequireDefault(require("../assets/img/icon_search.png"));
 var _icon_reload = _interopRequireDefault(require("../assets/img/icon_reload.png"));
 var _icon_plus = _interopRequireDefault(require("../assets/img/icon_plus.png"));
+var _icon_close = _interopRequireDefault(require("../assets/img/icon_close.png"));
+var _icon_ellipsis = _interopRequireDefault(require("../assets/img/icon_ellipsis.png"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -32,189 +34,35 @@ var TableView = function TableView() {
       task: "test1",
       date: "2025/01/01",
       name: "AAA",
-      status: "進行中",
+      status: "未着手",
       tag: "work",
       notes: "test test test"
     }, {
       task: "test2",
       date: "2025/02/01",
       name: "BBB",
-      status: "完了",
+      status: "進行中",
       tag: "private",
       notes: "TEST TEST TEST"
     }, {
       task: "test3",
       date: "2025/03/01",
       name: "CCC",
-      status: "未着手",
+      status: "完了",
       tag: "other",
       notes: "**************"
     }, {
       task: "test4",
       date: "2025/04/01",
       name: "aaa",
-      status: "アーカイブ",
+      status: "完了",
       tag: "other",
       notes: "11111111111"
     }, {
       task: "test5",
       date: "2025/05/01",
       name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
-      tag: "work",
-      notes: "aaaaaaaaaaaaaa"
-    }, {
-      task: "test5",
-      date: "2025/05/01",
-      name: "bbb",
-      status: "進行中",
+      status: "完了",
       tag: "work",
       notes: "aaaaaaaaaaaaaa"
     }]),
@@ -235,6 +83,18 @@ var TableView = function TableView() {
       return [].concat(_toConsumableArray(prevData), [newTask]);
     });
   };
+
+  // タスクを削除する
+  var handleDelete = function handleDelete(index) {
+    var confirmDelete = window.confirm("タスクを削除しますか？");
+    if (confirmDelete) {
+      setData(function (prevData) {
+        return prevData.filter(function (_, i) {
+          return i !== index;
+        });
+      });
+    }
+  };
   return /*#__PURE__*/React.createElement("div", {
     className: "p_tableView"
   }, /*#__PURE__*/React.createElement(_index.TableSideView, {
@@ -242,11 +102,13 @@ var TableView = function TableView() {
     onClose: toggleSideView,
     onAddTask: handleAddTask
   }), /*#__PURE__*/React.createElement("div", {
-    className: "p_tableView__heading"
+    className: "p_tableView__taskWrap"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "p_tableView__taskWrap__heading"
   }, /*#__PURE__*/React.createElement("p", {
-    className: "p_tableView__heading__title"
+    className: "p_tableView__taskWrap__heading__title"
   }, "All List"), /*#__PURE__*/React.createElement("div", {
-    className: "p_tableView__heading__iconWrap"
+    className: "p_tableView__taskWrap__heading__iconWrap"
   }, /*#__PURE__*/React.createElement("button", null, /*#__PURE__*/React.createElement("img", {
     className: "iconSearch",
     src: _icon_search.default,
@@ -262,12 +124,14 @@ var TableView = function TableView() {
     src: _icon_plus.default,
     alt: ""
   })))), /*#__PURE__*/React.createElement("div", {
-    className: "p_tableView__list"
+    className: "p_tableView__taskWrap__list"
   }, /*#__PURE__*/React.createElement("table", {
-    className: "p_tableView__list__theadContents"
+    className: "p_tableView__taskWrap__list__theadContents"
   }, /*#__PURE__*/React.createElement("thead", {
-    className: "p_tableView__list__theadContents__title"
+    className: "p_tableView__taskWrap__list__theadContents__title"
   }, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
+    className: "blankSpace"
+  }), /*#__PURE__*/React.createElement("th", {
     className: "task"
   }, "\u30BF\u30B9\u30AF\u540D"), /*#__PURE__*/React.createElement("th", {
     className: "date"
@@ -280,15 +144,25 @@ var TableView = function TableView() {
   }, "\u30BF\u30B0"), /*#__PURE__*/React.createElement("th", {
     className: "notes"
   }, "Notes")))), /*#__PURE__*/React.createElement("div", {
-    className: "p_tableView__list__listOverflow"
+    className: "p_tableView__taskWrap__list__listOverflow"
   }, /*#__PURE__*/React.createElement("table", {
-    className: "p_tableView__list__tbodyContents"
+    className: "p_tableView__taskWrap__list__tbodyContents"
   }, /*#__PURE__*/React.createElement("tbody", {
-    className: "p_tableView__list__tbodyContents__contents"
+    className: "p_tableView__taskWrap__list__tbodyContents__contents"
   }, data.map(function (item, index) {
     return /*#__PURE__*/React.createElement("tr", {
       key: index.toString()
     }, /*#__PURE__*/React.createElement("td", {
+      className: "btnArea"
+    }, /*#__PURE__*/React.createElement("button", {
+      className: "btnDelete",
+      onClick: function onClick() {
+        return handleDelete(index);
+      }
+    }, /*#__PURE__*/React.createElement("img", {
+      src: _icon_close.default,
+      alt: ""
+    }))), /*#__PURE__*/React.createElement("td", {
       className: "task"
     }, item.task), /*#__PURE__*/React.createElement("td", {
       className: "date"
@@ -301,6 +175,21 @@ var TableView = function TableView() {
     }, item.tag), /*#__PURE__*/React.createElement("td", {
       className: "notes"
     }, item.notes));
-  }))))));
+  })))))), /*#__PURE__*/React.createElement("div", {
+    className: "p_tableView__detailWrap"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "p_tableView__detailWrap__heading"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "p_tableView__detailWrap__heading__btnWrap"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btnEllipsis"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: _icon_ellipsis.default,
+    alt: ""
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "p_tableView__detailWrap__contents"
+  }, /*#__PURE__*/React.createElement("p", null, "\u9078\u629E\u3057\u305F\u30BF\u30B9\u30AF\u306E\u8A73\u7D30\u3092\u8868\u793A\u3002", /*#__PURE__*/React.createElement("br", null), "\u30BF\u30B9\u30AF\u306E\u524A\u9664\u306F\u3053\u3053\u304B\u3089\u3067\u304D\u308B\u3088\u3046\u306B\u3059\u308B\u3002", /*#__PURE__*/React.createElement("br", null), "Notes\u3082\u30EA\u30B9\u30C8\u304B\u3089\u6D88\u3057\u3066\u3053\u3063\u3061\u306B\u6301\u3063\u3066\u304F\u308B\u3002"), /*#__PURE__*/React.createElement("button", {
+    className: "btnDelete"
+  }, "\u524A\u9664"))));
 };
 var _default = exports.default = TableView;

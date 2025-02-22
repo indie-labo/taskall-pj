@@ -90,12 +90,20 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
 
             <li className="block">
               <p className="item">*ステータス</p>
-              <input className="field" type="text" value={status} onChange={(e) => setStatus(e.target.value)} />
+              <select className="field" value={status} onChange={(e) => setStatus(e.target.value)}>
+                <option value="未着手">未着手</option>
+                <option value="進行中">進行中</option>
+                <option value="完了">完了</option>
+              </select>
             </li>
 
             <li className="block">
               <p className="item">*タグ</p>
-              <input className="field" type="text" value={tag} onChange={(e) => setTag(e.target.value)} />
+              <select className="field" value={tag} onChange={(e) => setTag(e.target.value)}>
+                <option value="未着手">work</option>
+                <option value="進行中">private</option>
+                <option value="完了">other</option>
+              </select>
             </li>
 
             <li className="block">
