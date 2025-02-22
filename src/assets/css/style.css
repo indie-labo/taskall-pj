@@ -51,17 +51,18 @@ table {
   border-spacing: 0;
 }
 
-.lCommon {
+.l_common {
+  min-width: 1400px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-.lCommon .lSide {
+.l_common .l_side {
   width: 200px;
   height: 100vh;
   background-color: #4A4E58;
 }
-.lCommon .lSide__heading {
+.l_common .l_side__heading {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -76,24 +77,24 @@ table {
   color: #fff;
   background-color: #565B67;
 }
-.lCommon .lSide__main__list {
+.l_common .l_side__main__list {
   padding: 0;
   margin: 0;
 }
-.lCommon .lSide__main__list__item {
+.l_common .l_side__main__list__item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-.lCommon .lSide__main__list__item:hover {
+.l_common .l_side__main__list__item:hover {
   background-color: #33353c;
 }
-.lCommon .lSide__main__list__item img {
+.l_common .l_side__main__list__item img {
   display: block;
   width: 16px;
   height: 16px;
 }
-.lCommon .lSide__main__list__item__text {
+.l_common .l_side__main__list__item__text {
   font-size: 14px;
   padding: 10px 0 10px 40px;
   display: -webkit-box;
@@ -109,18 +110,18 @@ table {
   width: 100%;
   color: #fff;
 }
-.lCommon .lSide__main__list__item__text.active {
+.l_common .l_side__main__list__item__text.active {
   color: #1CA1C1;
   background-image: url(../../img/common/l-side__icon__calendar__active.png);
   background-color: #373a42;
   border-left: 4px solid #1CA1C1;
 }
-.lCommon .lMainWrap {
+.l_common .l_mainWrap {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
-.lCommon .lMainWrap .lHeader {
+.l_common .l_mainWrap .l_header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -131,10 +132,10 @@ table {
       -ms-flex-align: center;
           align-items: center;
   height: 70px;
-  padding: 10px;
+  padding: 10px 15px;
   background-color: #ffffff;
 }
-.lCommon .lMainWrap .lHeader__logo {
+.l_common .l_mainWrap .l_header__logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -142,12 +143,12 @@ table {
       -ms-flex-align: center;
           align-items: center;
 }
-.lCommon .lMainWrap .lHeader__logo__img {
+.l_common .l_mainWrap .l_header__logo__img {
   width: 50px;
   height: 50px;
   margin-right: 10px;
 }
-.lCommon .lMainWrap .lHeader__menu {
+.l_common .l_mainWrap .l_header__menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -155,13 +156,13 @@ table {
       -ms-flex-align: center;
           align-items: center;
 }
-.lCommon .lMainWrap .lHeader__notification {
+.l_common .l_mainWrap .l_header__notification {
   position: relative;
 }
-.lCommon .lMainWrap .lHeader__notification__img {
+.l_common .l_mainWrap .l_header__notification__img {
   width: 20px;
 }
-.lCommon .lMainWrap .lHeader__notification__number {
+.l_common .l_mainWrap .l_header__notification__number {
   position: absolute;
   top: -10px;
   right: -5px;
@@ -174,26 +175,26 @@ table {
   background-color: #FE8839;
   border-radius: 50%;
 }
-.lCommon .lMainWrap .lHeader__setting {
+.l_common .l_mainWrap .l_header__setting {
   margin-left: 20px;
 }
-.lCommon .lMainWrap .lHeader__setting__img {
+.l_common .l_mainWrap .l_header__setting__img {
   width: 20px;
 }
-.lCommon .lMainWrap .lHeader__profile {
+.l_common .l_mainWrap .l_header__profile {
   margin-left: 30px;
   background-color: #f0f0f0;
   border-radius: 50%;
 }
-.lCommon .lMainWrap .lHeader__profile__img {
+.l_common .l_mainWrap .l_header__profile__img {
   width: 40px;
 }
-.lCommon .lMainWrap .lMainView {
+.l_common .l_mainWrap .l_mainView {
   height: calc(100% - 70px);
   padding: 15px;
   background-color: #EBEDF0;
 }
-.lCommon .lMainWrap .lMainView__contents {
+.l_common .l_mainWrap .l_mainView__contents {
   background-color: #fff;
 }
 
@@ -327,42 +328,75 @@ table {
   padding: 10px 30px;
   background-color: #fff;
 }
-.p_tableView__list__title {
+.p_tableView__list__theadContents {
+  width: 100%;
+}
+.p_tableView__list__theadContents__title {
   font-size: 14px;
   font-weight: 500;
 }
-.p_tableView__list__title tr th {
+.p_tableView__list__theadContents__title tr th {
   padding: 5px;
   text-align: left;
   border-bottom: 1px solid #EBEDF0;
 }
-.p_tableView__list__title tr .task {
+.p_tableView__list__theadContents__title tr .task {
   width: 25%;
 }
-.p_tableView__list__title tr .date {
-  width: 10%;
+.p_tableView__list__theadContents__title tr .date {
+  width: 12%;
 }
-.p_tableView__list__title tr .name {
-  width: 10%;
+.p_tableView__list__theadContents__title tr .name {
+  width: 12%;
 }
-.p_tableView__list__title tr .status {
-  width: 10%;
+.p_tableView__list__theadContents__title tr .status {
+  width: 12%;
 }
-.p_tableView__list__title tr .tag {
-  width: 10%;
+.p_tableView__list__theadContents__title tr .tag {
+  width: 8%;
 }
-.p_tableView__list__title tr .notes {
+.p_tableView__list__theadContents__title tr .notes {
   width: 100%;
 }
-.p_tableView__list__contents {
+.p_tableView__list__tbodyContents {
+  width: 100%;
+}
+.p_tableView__list__tbodyContents__contents {
   font-size: 14px;
 }
-.p_tableView__list__contents tr:last-of-type td {
+.p_tableView__list__tbodyContents__contents tr:last-of-type td {
   border-bottom: none;
 }
-.p_tableView__list__contents tr td {
+.p_tableView__list__tbodyContents__contents tr:last-of-type .task {
+  width: 25%;
+}
+.p_tableView__list__tbodyContents__contents tr:last-of-type .date {
+  width: 12%;
+}
+.p_tableView__list__tbodyContents__contents tr:last-of-type .name {
+  width: 12%;
+}
+.p_tableView__list__tbodyContents__contents tr:last-of-type .status {
+  width: 12%;
+}
+.p_tableView__list__tbodyContents__contents tr:last-of-type .tag {
+  width: 8%;
+}
+.p_tableView__list__tbodyContents__contents tr:last-of-type .notes {
+  width: 100%;
+}
+.p_tableView__list__tbodyContents__contents tr:hover {
+  background-color: #f5f5f5;
+  opacity: 0.7;
+  font-weight: 500;
+}
+.p_tableView__list__tbodyContents__contents tr td {
   padding: 5px;
   text-align: left;
   border-bottom: 1px solid #EBEDF0;
+}
+.p_tableView__list__listOverflow {
+  max-height: calc(100vh - 192px);
+  overflow-y: auto;
 }
 /*# sourceMappingURL=style.css.map */

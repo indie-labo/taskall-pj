@@ -139,54 +139,92 @@
     padding: 10px 30px;
     background-color: #fff;
 
-    &__title {
-      font-size: 14px;
-      font-weight: 500;
+    
+    &__theadContents {
+      width: 100%;
 
-      tr {
-        th {
-          padding: 5px;
-          text-align: left;
-          border-bottom: 1px solid #EBEDF0;
-        }
-        .task {
-          width: 25%;
-        }
-        .date {
-          width: 10%;
-        }
-        .name {
-          width: 10%;
-        }
-        .status {
-          width: 10%;
-        }
-        .tag {
-          width: 10%;
-        }
-        .notes {
-          width: 100%;
+      &__title {
+        font-size: 14px;
+        font-weight: 500;
+  
+        tr {
+          th {
+            padding: 5px;
+            text-align: left;
+            border-bottom: 1px solid #EBEDF0;
+          }
+          .task {
+            width: 25%;
+          }
+          .date {
+            width: 12%;
+          }
+          .name {
+            width: 12%;
+          }
+          .status {
+            width: 12%;
+          }
+          .tag {
+            width: 8%;
+          }
+          .notes {
+            width: 100%;
+          }
         }
       }
     }
 
-    &__contents {
-      font-size: 14px;
+    &__tbodyContents {
+      width: 100%;
 
-      tr {
-        &:last-of-type {
+      &__contents {
+        font-size: 14px;
+  
+        tr {
+          &:last-of-type {
+            td {
+              border-bottom: none;
+            }
+            .task {
+              width: 25%;
+            }
+            .date {
+              width: 12%;
+            }
+            .name {
+              width: 12%;
+            }
+            .status {
+              width: 12%;
+            }
+            .tag {
+              width: 8%;
+            }
+            .notes {
+              width: 100%;
+            }
+          }
+  
+          &:hover {
+            // cursor: pointer;
+            background-color: #f5f5f5;
+            opacity: .7;
+            font-weight: 500;
+          }
+  
           td {
-            border-bottom: none;
+            padding: 5px;
+            text-align: left;
+            border-bottom: 1px solid #EBEDF0;
           }
         }
-
-        td {
-          padding: 5px;
-          text-align: left;
-          border-bottom: 1px solid #EBEDF0;
-        }
       }
+    }
 
+    &__listOverflow {
+      max-height: calc(100vh - 192px); //他要素の高さ変える場合は減算する値の修正必要 ＊別途指定方法考え直す
+      overflow-y: auto;
     }
   }
 }

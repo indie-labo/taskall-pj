@@ -1,4 +1,4 @@
-import {TableView, KanbanView} from '../component/index.ts';
+import { TableView } from '../component/index.ts';
 import '../assets/css/style.css';
 
 interface MainViewProps {
@@ -8,18 +8,18 @@ interface MainViewProps {
 const MainView: React.FC<MainViewProps> = (props) => {
   const renderView = () => {
     switch (props.view) {
+      case "initialState":
+        return <p>Hello World</p>
       case "table":
         return <TableView />;
-      case "kanban":
-        return <KanbanView />;
       default:
-        return <p>test</p>;
+        return <p>Coming soon...</p>;
     }
   };
 
   return(
-    <main className="lMainView">
-      <div className="lMainView__contents">
+    <main className="l_mainView">
+      <div className="l_mainView__contents">
         {renderView()}
       </div>
     </main>

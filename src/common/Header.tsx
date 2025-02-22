@@ -6,22 +6,22 @@ import headerProfile from '../assets/img/common/l-header__profile.png';
 
 const Header: React.FC = () => {
   return(
-    <header className="lHeader">
-      <div className="lHeader__logo">
-        <img className="lHeader__logo__img" src={headerLogo} alt="" />
+    <header className="l_header">
+      <div className="l_header__logo">
+        <img className="l_header__logo__img" src={headerLogo} alt="" />
         <p>Taskall</p>
       </div>
-      <div className="lHeader__menu">
-        <div className="lHeader__notification">
-          <img className="lHeader__notification__img" src={headerNotification} alt="" />
-          <p className="lHeader__notification__number">5</p>
+      <div className="l_header__menu">
+        <div className="l_header__notification">
+          <img className="l_header__notification__img" src={headerNotification} alt="" />
+          <p className="l_header__notification__number">5</p>
         </div>
-        <div className="lHeader__setting">
-          <img className="lHeader__setting__img" src={headerSetting} alt="" />
+        <div className="l_header__setting">
+          <img className="l_header__setting__img" src={headerSetting} alt="" />
         </div>
-        <div className="lHeader__profile">
-          <img className="lHeader__profile__img" src={headerProfile} alt="" />
-          <div className="lHeader__profile__status"></div>
+        <div className="l_header__profile">
+          <img className="l_header__profile__img" src={headerProfile} alt="" />
+          <div className="l_header__profile__status"></div>
         </div>
       </div>
     </header>

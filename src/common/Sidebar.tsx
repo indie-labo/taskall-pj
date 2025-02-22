@@ -7,29 +7,40 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = (props) => {
   return(
-    <aside className="lSide">
-      <div className="lSide__heading">ADMIN APP</div>
+    <aside className="l_side">
+      <div className="l_side__heading">ADMIN APP</div>
 
-      <div className="lSide__main">
-        <ul className="lSide__main__list">
-          <li className="lSide__main__list__item">
-            <a href="" className="lSide__main__list__item__text">Dash board</a>
+      <div className="l_side__main">
+        <ul className="l_side__main__list">
+          <li className="l_side__main__list__item">
+            <button onClick={() => props.setView("dashBoard")} className={`l_side__main__list__item__text ${props.activeView === "dashBoard" ? "active" : ""}`}>
+              Dash board
+            </button>
           </li>
-          <li className="lSide__main__list__item">
-            <a href="" className="lSide__main__list__item__text">Chats</a>
-          </li>
-          <li className="lSide__main__list__item">
-            <button onClick={() => props.setView("table")} className={`lSide__main__list__item__text ${props.activeView === "table" ? "active" : ""}`}>
+          <li className="l_side__main__list__item">
+            <button onClick={() => props.setView("table")} className={`l_side__main__list__item__text ${props.activeView === "table" ? "active" : ""}`}>
               Tables
             </button>
           </li>
-          <li className="lSide__main__list__item">
-            <button onClick={() => props.setView("kanban")} className={`lSide__main__list__item__text ${props.activeView === "kanban" ? "active" : ""}`}>
+          <li className="l_side__main__list__item">
+            <button onClick={() => props.setView("kanban")} className={`l_side__main__list__item__text ${props.activeView === "kanban" ? "active" : ""}`}>
               Kanban
             </button>
           </li>
-          <li className="lSide__main__list__item">
-            <a href="" className="lSide__main__list__item__text">File Manager</a>
+          <li className="l_side__main__list__item">
+            <button onClick={() => props.setView("gantt")} className={`l_side__main__list__item__text ${props.activeView === "gantt" ? "active" : ""}`}>
+              Gantt chart
+            </button>
+          </li>
+          <li className="l_side__main__list__item">
+            <button onClick={() => props.setView("chats")} className={`l_side__main__list__item__text ${props.activeView === "chats" ? "active" : ""}`}>
+              Chats
+            </button>
+          </li>
+          <li className="l_side__main__list__item">
+            <button onClick={() => props.setView("fileMg")} className={`l_side__main__list__item__text ${props.activeView === "fileMg" ? "active" : ""}`}>
+              File Manager
+            </button>
           </li>
         </ul>
       </div>

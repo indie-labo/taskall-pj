@@ -3,15 +3,15 @@ import {Sidebar, Header, MainView} from './common/index.ts'
 import './App.css'
 
 function App() {
-  const [view, setView] = useState("");
+  const [view, setView] = useState("initialState");
 
   console.log("test");
 
   return (
-    <div className='lCommon'>
+    <div className='l_common'>
       <Sidebar setView={setView} activeView={view} />
 
-      <div className='lMainWrap'>
+      <div className='l_mainWrap'>
         <Header />
         <MainView view={view} />
       </div>

@@ -14,18 +14,18 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 function App() {
-  var _useState = (0, _react.useState)(""),
+  var _useState = (0, _react.useState)("initialState"),
     _useState2 = _slicedToArray(_useState, 2),
     view = _useState2[0],
     setView = _useState2[1];
   console.log("test");
   return /*#__PURE__*/React.createElement("div", {
-    className: "lCommon"
+    className: "l_common"
   }, /*#__PURE__*/React.createElement(_index.Sidebar, {
     setView: setView,
     activeView: view
   }), /*#__PURE__*/React.createElement("div", {
-    className: "lMainWrap"
+    className: "l_mainWrap"
   }, /*#__PURE__*/React.createElement(_index.Header, null), /*#__PURE__*/React.createElement(_index.MainView, {
     view: view
   })));

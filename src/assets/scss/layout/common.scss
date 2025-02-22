@@ -1,9 +1,10 @@
-.lCommon {
+.l_common {
+  min-width: 1400px;
   display: flex;
 
   // sidebar
   // ========================
-  .lSide {
+  .l_side {
     width: 200px;
     height: 100vh;
     background-color: #4A4E58;
@@ -62,17 +63,17 @@
     }
   }
 
-  .lMainWrap {
+  .l_mainWrap {
     flex: 1;
 
     // header
     // ========================
-    .lHeader {
+    .l_header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       height: 70px;
-      padding: 10px;
+      padding: 10px 15px;
       background-color: #ffffff;
     
       &__logo {
@@ -134,7 +135,7 @@
 
     // mainview ・・・メインビューのスタイル
     // ========================
-    .lMainView {
+    .l_mainView {
       height: calc(100% - 70px); //headerの高さ分だけマイナス
       padding: 15px;
       background-color: #EBEDF0;

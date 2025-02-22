@@ -25,6 +25,28 @@ const TableView: React.FC = () => {
       { task: "test3", date: "2025/03/01", name: "CCC", status: "未着手", tag: "other", notes: "**************" },
       { task: "test4", date: "2025/04/01", name: "aaa", status: "アーカイブ", tag: "other", notes: "11111111111" },
       { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
+      { task: "test5", date: "2025/05/01", name: "bbb", status: "進行中", tag: "work", notes: "aaaaaaaaaaaaaa" },
     ]
   );
 
@@ -53,31 +75,37 @@ const TableView: React.FC = () => {
         </div>
       </div>
 
-      <table className="p_tableView__list">
-        <thead className="p_tableView__list__title">
-          <tr>
-            <th className="task">タスク名</th>
-            <th className="date">日付</th>
-            <th className="name">担当者</th>
-            <th className="status">ステータス</th>
-            <th className="tag">タグ</th>
-            <th className="notes">Notes</th>
-          </tr>
-        </thead>
-
-        <tbody className="p_tableView__list__contents">
-          {data.map((item, index) => (
-            <tr key={index.toString()}>
-              <td>{item.task}</td>
-              <td>{item.date}</td>
-              <td>{item.name}</td>
-              <td>{item.status}</td>
-              <td>{item.tag}</td>
-              <td>{item.notes}</td>
+      <div className="p_tableView__list">
+        <table className="p_tableView__list__theadContents">
+          <thead className="p_tableView__list__theadContents__title">
+            <tr>
+              <th className="task">タスク名</th>
+              <th className="date">日付</th>
+              <th className="name">担当者</th>
+              <th className="status">ステータス</th>
+              <th className="tag">タグ</th>
+              <th className="notes">Notes</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+        </table>
+
+        <div className="p_tableView__list__listOverflow">
+          <table className="p_tableView__list__tbodyContents">
+            <tbody className="p_tableView__list__tbodyContents__contents">
+              {data.map((item, index) => (
+                <tr key={index.toString()}>
+                  <td className="task">{item.task}</td>
+                  <td className="date">{item.date}</td>
+                  <td className="name">{item.name}</td>
+                  <td className="status">{item.status}</td>
+                  <td className="tag">{item.tag}</td>
+                  <td className="notes">{item.notes}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }
