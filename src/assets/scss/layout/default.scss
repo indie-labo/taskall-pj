@@ -55,6 +55,11 @@ button {
   &:focus {
     outline: none;
   }
+
+  &:hover {
+    cursor: pointer;
+    opacity: .7;
+  }
 }
 
 table {

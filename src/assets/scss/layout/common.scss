@@ -43,16 +43,11 @@
             padding: 10px 0 10px 40px;
             display: flex;
             align-items: center;
-            background-image: url(../../img/common/l-side__icon__calendar.png);
-            background-size: 16px 16px;
-            background-position: 10px center;
-            background-repeat: no-repeat;
             width: 100%;
             color: #fff;
   
             &.active {
               color: #1CA1C1;
-              background-image: url(../../img/common/l-side__icon__calendar__active.png);
               background-color: #373a42;
               border-left: 4px solid #1CA1C1;
             }
@@ -95,11 +90,11 @@
       &__notification {
         position: relative;
     
-        &__img {
+        .btnNotification {
           width: 20px;
         }
     
-        &__number {
+        .notificationNum {
           position: absolute;
           top: -10px;
           right: -5px;
@@ -117,7 +112,7 @@
       &__setting {
         margin-left: 20px;
     
-        &__img {
+        .btnSetting {
           width: 20px;
         }
       }
@@ -127,7 +122,7 @@
         background-color: #f0f0f0;
         border-radius: 50%;
     
-        &__img {
+        .btnProfile {
           width: 40px;
         }
       }

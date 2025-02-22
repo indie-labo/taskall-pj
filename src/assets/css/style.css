@@ -46,6 +46,10 @@ button {
 button:focus {
   outline: none;
 }
+button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
 
 table {
   border-spacing: 0;
@@ -103,16 +107,11 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-image: url(../../img/common/l-side__icon__calendar.png);
-  background-size: 16px 16px;
-  background-position: 10px center;
-  background-repeat: no-repeat;
   width: 100%;
   color: #fff;
 }
 .l_common .l_side__main__list__item__text.active {
   color: #1CA1C1;
-  background-image: url(../../img/common/l-side__icon__calendar__active.png);
   background-color: #373a42;
   border-left: 4px solid #1CA1C1;
 }
@@ -159,10 +158,10 @@ table {
 .l_common .l_mainWrap .l_header__notification {
   position: relative;
 }
-.l_common .l_mainWrap .l_header__notification__img {
+.l_common .l_mainWrap .l_header__notification .btnNotification {
   width: 20px;
 }
-.l_common .l_mainWrap .l_header__notification__number {
+.l_common .l_mainWrap .l_header__notification .notificationNum {
   position: absolute;
   top: -10px;
   right: -5px;
@@ -178,7 +177,7 @@ table {
 .l_common .l_mainWrap .l_header__setting {
   margin-left: 20px;
 }
-.l_common .l_mainWrap .l_header__setting__img {
+.l_common .l_mainWrap .l_header__setting .btnSetting {
   width: 20px;
 }
 .l_common .l_mainWrap .l_header__profile {
@@ -186,7 +185,7 @@ table {
   background-color: #f0f0f0;
   border-radius: 50%;
 }
-.l_common .l_mainWrap .l_header__profile__img {
+.l_common .l_mainWrap .l_header__profile .btnProfile {
   width: 40px;
 }
 .l_common .l_mainWrap .l_mainView {
@@ -305,7 +304,7 @@ table {
   font-size: 16px;
   font-weight: bold;
 }
-.p_tableView__taskWrap__heading__iconWrap {
+.p_tableView__taskWrap__heading__btnWrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -313,19 +312,19 @@ table {
       -ms-flex-align: center;
           align-items: center;
 }
-.p_tableView__taskWrap__heading__iconWrap .iconSearch {
+.p_tableView__taskWrap__heading__btnWrap .btnSearch {
   display: inline-block;
   width: 20px;
   height: 20px;
   margin-right: 20px;
 }
-.p_tableView__taskWrap__heading__iconWrap .iconReload {
+.p_tableView__taskWrap__heading__btnWrap .btnReload {
   display: inline-block;
   width: 20px;
   height: 20px;
   margin-right: 20px;
 }
-.p_tableView__taskWrap__heading__iconWrap .iconPlus {
+.p_tableView__taskWrap__heading__btnWrap .btnAdd {
   display: inline-block;
   width: 15px;
   height: 15px;

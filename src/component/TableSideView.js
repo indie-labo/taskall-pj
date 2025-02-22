@@ -43,13 +43,21 @@ var TableSideView = function TableSideView(props) {
     _useState12 = _slicedToArray(_useState11, 2),
     notes = _useState12[0],
     setNotes = _useState12[1];
+  var _useState13 = (0, _react.useState)(""),
+    _useState14 = _slicedToArray(_useState13, 2),
+    errorMessage = _useState14[0],
+    setErrorMessage = _useState14[1];
 
   // タスク追加時、jsonに値を送る処理
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
 
     // 空白の場合、値を送信しない
-    if (!task || !date || !name || !status || !tag || !notes) return;
+    if (!task) {
+      setErrorMessage('※タスク名を入力してください');
+      return;
+    }
+    setErrorMessage('');
 
     // 新しいタスクを作成し、親コンポーネントに渡す
     props.onAddTask({
@@ -163,11 +171,11 @@ var TableSideView = function TableSideView(props) {
       return setTag(e.target.value);
     }
   }, /*#__PURE__*/_react.default.createElement("option", {
-    value: "\u672A\u7740\u624B"
+    value: "work"
   }, "work"), /*#__PURE__*/_react.default.createElement("option", {
-    value: "\u9032\u884C\u4E2D"
+    value: "private"
   }, "private"), /*#__PURE__*/_react.default.createElement("option", {
-    value: "\u5B8C\u4E86"
+    value: "other"
   }, "other"))), /*#__PURE__*/_react.default.createElement("li", {
     className: "block"
   }, /*#__PURE__*/_react.default.createElement("p", {
@@ -178,7 +186,13 @@ var TableSideView = function TableSideView(props) {
     onChange: function onChange(e) {
       return setNotes(e.target.value);
     }
-  }))), /*#__PURE__*/_react.default.createElement("button", {
+  }))), errorMessage && /*#__PURE__*/_react.default.createElement("p", {
+    style: {
+      marginBottom: '15px',
+      fontSize: '14px',
+      color: 'red'
+    }
+  }, errorMessage), /*#__PURE__*/_react.default.createElement("button", {
     className: "btnSubmit",
     type: "submit"
   }, "\u8FFD\u52A0"))));

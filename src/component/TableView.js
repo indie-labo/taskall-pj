@@ -108,19 +108,21 @@ var TableView = function TableView() {
   }, /*#__PURE__*/React.createElement("p", {
     className: "p_tableView__taskWrap__heading__title"
   }, "All List"), /*#__PURE__*/React.createElement("div", {
-    className: "p_tableView__taskWrap__heading__iconWrap"
-  }, /*#__PURE__*/React.createElement("button", null, /*#__PURE__*/React.createElement("img", {
-    className: "iconSearch",
+    className: "p_tableView__taskWrap__heading__btnWrap"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btnSearch"
+  }, /*#__PURE__*/React.createElement("img", {
     src: _icon_search.default,
     alt: ""
-  })), /*#__PURE__*/React.createElement("button", null, /*#__PURE__*/React.createElement("img", {
-    className: "iconReload",
+  })), /*#__PURE__*/React.createElement("button", {
+    className: "btnReload"
+  }, /*#__PURE__*/React.createElement("img", {
     src: _icon_reload.default,
     alt: ""
   })), /*#__PURE__*/React.createElement("button", {
+    className: "btnAdd",
     onClick: toggleSideView
   }, /*#__PURE__*/React.createElement("img", {
-    className: "iconPlus",
     src: _icon_plus.default,
     alt: ""
   })))), /*#__PURE__*/React.createElement("div", {
@@ -188,7 +190,7 @@ var TableView = function TableView() {
     alt: ""
   })))), /*#__PURE__*/React.createElement("div", {
     className: "p_tableView__detailWrap__contents"
-  }, /*#__PURE__*/React.createElement("p", null, "\u9078\u629E\u3057\u305F\u30BF\u30B9\u30AF\u306E\u8A73\u7D30\u3092\u8868\u793A\u3002", /*#__PURE__*/React.createElement("br", null), "\u30BF\u30B9\u30AF\u306E\u524A\u9664\u306F\u3053\u3053\u304B\u3089\u3067\u304D\u308B\u3088\u3046\u306B\u3059\u308B\u3002", /*#__PURE__*/React.createElement("br", null), "Notes\u3082\u30EA\u30B9\u30C8\u304B\u3089\u6D88\u3057\u3066\u3053\u3063\u3061\u306B\u6301\u3063\u3066\u304F\u308B\u3002"), /*#__PURE__*/React.createElement("button", {
+  }, /*#__PURE__*/React.createElement("p", null, "\u9078\u629E\u3057\u305F\u30BF\u30B9\u30AF\u306E\u8A73\u7D30\u3092\u8868\u793A\u3002", /*#__PURE__*/React.createElement("br", null), "\u30BF\u30B9\u30AF\u306E\u524A\u9664\u306F\u3053\u3053\u304B\u3089\u3067\u304D\u308B\u3088\u3046\u306B\u3059\u308B\u3002", /*#__PURE__*/React.createElement("br", null), "\uFF0A\u3044\u307E\u306F\u30BF\u30B9\u30AF\u6A2A\u306E\xD7\u30DC\u30BF\u30F3\u3067\u524A\u9664", /*#__PURE__*/React.createElement("br", null), "Notes\u3082\u30EA\u30B9\u30C8\u304B\u3089\u6D88\u3057\u3066\u3053\u3063\u3061\u306B\u6301\u3063\u3066\u304F\u308B\u3002"), /*#__PURE__*/React.createElement("button", {
     className: "btnDelete"
   }, "\u524A\u9664"))));
 };

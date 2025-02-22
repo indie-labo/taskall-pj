@@ -25,13 +25,19 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
   const [status, setStatus] = useState("");
   const [tag, setTag] = useState("");
   const [notes, setNotes] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   // タスク追加時、jsonに値を送る処理
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     // 空白の場合、値を送信しない
-    if (!task || !date || !name || !status || !tag || !notes) return;
+    if (!task ) {
+      setErrorMessage('※タスク名を入力してください');
+      return;
+    }
+
+    setErrorMessage('');
 
     // 新しいタスクを作成し、親コンポーネントに渡す
     props.onAddTask({ task, date, name, status, tag, notes });
@@ -44,7 +50,6 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
     setTag("");
     setNotes("");
   }
-
 
   // サイドビューを閉じる
   useEffect(() => {
@@ -100,9 +105,9 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
             <li className="block">
               <p className="item">*タグ</p>
               <select className="field" value={tag} onChange={(e) => setTag(e.target.value)}>
-                <option value="未着手">work</option>
-                <option value="進行中">private</option>
-                <option value="完了">other</option>
+                <option value="work">work</option>
+                <option value="private">private</option>
+                <option value="other">other</option>
               </select>
             </li>
 
@@ -111,6 +116,9 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
               <textarea className="field textArea" value={notes} onChange={(e) => setNotes(e.target.value)} />
             </li>
           </ul>
+
+          {/* 未入力項目があった場合のエラーメッセージ */}
+          {errorMessage && <p style={{ marginBottom: '15px', fontSize: '14px', color: 'red' }}>{errorMessage}</p>}
 
           <button className="btnSubmit" type="submit">追加</button>
         </form>

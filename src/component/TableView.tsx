@@ -57,10 +57,10 @@ const TableView: React.FC = () => {
         <div className="p_tableView__taskWrap__heading">
           <p className="p_tableView__taskWrap__heading__title">All List</p>
 
-          <div className="p_tableView__taskWrap__heading__iconWrap">
-            <button><img className="iconSearch" src={iconSearch} alt="" /></button>
-            <button><img className="iconReload" src={iconReload} alt="" /></button>
-            <button onClick={toggleSideView}><img className="iconPlus" src={iconPlus} alt="" /></button>
+          <div className="p_tableView__taskWrap__heading__btnWrap">
+            <button className="btnSearch"><img src={iconSearch} alt="" /></button>
+            <button className="btnReload"><img src={iconReload} alt="" /></button>
+            <button className="btnAdd" onClick={toggleSideView}><img src={iconPlus} alt="" /></button>
           </div>
         </div>
 
@@ -112,6 +112,7 @@ const TableView: React.FC = () => {
           <p>
             選択したタスクの詳細を表示。
             <br />タスクの削除はここからできるようにする。
+            <br />＊いまはタスク横の×ボタンで削除
             <br />Notesもリストから消してこっちに持ってくる。
           </p>
 

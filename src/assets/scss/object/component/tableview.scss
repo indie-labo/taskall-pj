@@ -113,25 +113,25 @@
         font-weight: bold;
       }
   
-      &__iconWrap {
+      &__btnWrap {
         display: flex;
         align-items: center;
   
-        .iconSearch {
+        .btnSearch {
           display: inline-block;
           width: 20px;
           height: 20px;
           margin-right: 20px;
         }
   
-        .iconReload {
+        .btnReload {
           display: inline-block;
           width: 20px;
           height: 20px;
           margin-right: 20px;
         }
   
-        .iconPlus {
+        .btnAdd {
           display: inline-block;
           width: 15px;
           height: 15px;
