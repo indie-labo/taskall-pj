@@ -1,7 +1,4 @@
-
-import { useSelector } from "react-redux"
 import { Navigate, Outlet, useLocation } from "react-router-dom"
-import { UserState, selectUser } from "@/features/userSlice"
 import { auth } from "@/lib/firebase"
 
 interface AuthProps {
@@ -11,14 +8,13 @@ interface AuthProps {
 
 const AuthRoute = (props: AuthProps) => {
   const location = useLocation();
-  const user: UserState = useSelector(selectUser);
   const { to, isLoading } = props;
-
+  console.log(location.pathname);
   if (isLoading) {
     return null;
   }
 
-  if (!user.isLogin) {
+  if (!auth.currentUser) {
     return <Navigate to={to} state={{ from: location.pathname }} replace />
   }
 

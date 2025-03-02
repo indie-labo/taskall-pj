@@ -37,6 +37,7 @@ const App = () => {
       <Route element={ <AuthRoute to="/login" isLoading={isLoading} />} >
         <Route path="/" element={<Dashboard />} errorElement={<ErrorPage />} >
           <Route path="home" element={<Home />} />
+          <Route path="neko" element={<Home />} />
         </Route>
       </Route>
       <Route path="/login" element={<LoginPage />} />
