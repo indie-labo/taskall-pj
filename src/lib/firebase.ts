@@ -11,9 +11,9 @@ const firebaseConfig = {
   appId: process.env.VITE_FIREBASE_APP_ID,
 };
 
-if (!getApps()?.length) {
-  initializeApp(firebaseConfig);
-}
+// if (!getApps()?.length) {
+  const app = initializeApp(firebaseConfig);
+// }
 
 export const auth = getAuth();
-export const db = getFirestore();
+export const db = getFirestore(app);

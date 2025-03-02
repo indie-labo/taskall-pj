@@ -10,6 +10,7 @@ const AuthRoute = (props: AuthProps) => {
   const location = useLocation();
   const { to, isLoading } = props;
   console.log(location.pathname);
+  console.log(auth.currentUser);
   if (isLoading) {
     return null;
   }

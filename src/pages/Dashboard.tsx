@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { useDispatch } from "react-redux"
 import { useNavigate, Outlet, Link } from 'react-router-dom'
+import { Sidebar, Header, MainView } from '@/common/index'
 import { logout } from "@/features/userSlice"
 import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase"
@@ -10,15 +12,13 @@ const Dashboard = () => {
     const onLogout = () => dispatch(logout());
 
     return (
-        <div>
-            <h2>Hello user welcome to Dashboard</h2>
-            <h3>This page is protected</h3><br />
-            <Link to="home">Go To HOME</Link>
-            <Outlet />
-            <button onClick={async () => signOut(auth)}>
-                Logout
-            </button>
+      <div className='l_common'>
+        <Sidebar />
+        <div className='l_mainWrap'>
+          <Header />
+          <MainView />
         </div>
+    </div>
     );
 };
 

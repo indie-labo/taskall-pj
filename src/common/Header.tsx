@@ -1,3 +1,8 @@
+import { useDispatch } from "react-redux"
+import { useNavigate } from 'react-router-dom'
+import { logout } from "@/features/userSlice"
+import { signOut } from "firebase/auth";
+import { auth } from "@/lib/firebase"
 import '../assets/css/style.css';
 import headerLogo from '../assets/img/icon_tetoria.png';
 import headerNotification from '../assets/img/icon_notification.png';
@@ -5,6 +10,9 @@ import headerSetting from '../assets/img/icon_setting.png';
 import headerProfile from '../assets/img/icon_profile.png';
 
 const Header: React.FC = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const onLogout = () => dispatch(logout());
   return(
     <header className="l_header">
       <div className="l_header__logo">
@@ -20,7 +28,7 @@ const Header: React.FC = () => {
           <button className="btnSetting"><img src={headerSetting} alt="" /></button>
         </div>
         <div className="l_header__profile">
-          <button className="btnProfile"><img src={headerProfile} alt="" /></button>
+          <button className="btnProfile" onClick={async () => signOut(auth)}><img src={headerProfile} alt="" /></button>
         </div>
       </div>
     </header>

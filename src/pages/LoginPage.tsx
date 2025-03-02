@@ -1,100 +1,129 @@
 import React, { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { signInWithEmailAndPassword } from 'firebase/auth'
+import {
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  browserLocalPersistence,
+  browserSessionPersistence
+} from 'firebase/auth'
 import { auth } from '@/lib/firebase'
 import Message from '@/lib/message.json'
 import { UserState, selectUser } from '@/features/userSlice'
 import { useSelector } from 'react-redux'
 
 const LoginPage = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [passType, setPassType] = useState<string>('password');
-  const [checked, setChecked] = useState<boolean>(false);
-  const [message, setMessage] = useState<string | null>(null);
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [passView, setPassView] = useState<string>('password')
+  const [viewChecked, setViewChecked] = useState<boolean>(false)
+  const [holdChecked, setHoldChecked] = useState<boolean>(false)
+  const [message, setMessage] = useState<string | null>(null)
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  // const { from }: { from: string }  = location.state as { from: string } || { from: null };
-  const user: UserState = useSelector(selectUser);
-  const errorMessages: {[key: string]: string} = Message.firebase.error;
+  const navigate = useNavigate()
+  const location = useLocation()
+  // const { from }: { from: string }  = location.state as { from: string } || { from: null }
+  const user: UserState = useSelector(selectUser)
+  const errorMessages: {[key: string]: string} = Message.firebase.error
 
-  const switchPassType = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if(event.target.checked) {
-      setPassType('text');
-      setChecked(true);
-    } else {
-      setPassType('password');
-      setChecked(false);
-    }
+  const switchPassView = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setViewChecked(event.target.checked)
+    setPassView(viewChecked ? 'text' : 'password')
+  }
+
+  const switchHoldView = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setHoldChecked(event.target.checked)
   }
 
   const signInEmail = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
+    event.preventDefault()
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await auth.setPersistence(holdChecked ? browserLocalPersistence : browserSessionPersistence)
+      await signInWithEmailAndPassword(auth, email, password)
     } catch (error: any) {
-      const errorCode: string = error.code; 
+      const errorCode: string = error.code
       switch (errorCode) {
         case "auth/invalid-email":
-          setMessage(errorMessages[errorCode]);
-          break;
+          setMessage(errorMessages[errorCode])
+          break
+      } 
+    }
+  }
+
+  const signInGoolge = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    try {
+      const provider = new GoogleAuthProvider()
+      provider.addScope('https://www.googleapis.com/auth/contacts.readonly')
+      await signInWithPopup(auth, provider)
+    } catch (error: any) {
+      const errorCode: string = error.code
+      switch (errorCode) {
+        case "auth/invalid-email":
+          setMessage(errorMessages[errorCode])
+          break
       } 
     }
   }
 
   return (
-    <div class="pageLogin">
-      <h1 class="title">会員ログイン</h1>
-      <div class="contentsBg">
-        <div class="contents">
-          <div class="login">
-            <div class="loginId">
-              <label class="labelId" for="userId">お客様ID（メールアドレス）</label>
+    <div className="pageLogin">
+      <h1 className="title">会員ログイン</h1>
+      <div className="contentsBg">
+        <div className="contents">
+          <div className="login">
+            <div className="loginId">
+              <label className="labelId" htmlFor="userId">お客様ID（メールアドレス）</label>
               <input
-                class="inputId"
+                className="inputId"
                 type="text"
                 name="userId"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div class="loginPass">
-              <label class="labelPass" for="userPass">パスワード</label>
+            <div className="loginPass">
+              <label className="labelPass" htmlFor="userPass">パスワード</label>
               <input
-                class="inputPass"
-                type={passType}
+                className="inputPass"
+                type={passView}
                 name="userPass"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <input
-                class="inputCheck"
+                className="inputCheck"
                 type="checkbox"
                 name="view"
-                checked={checked}
-                onChange={switchPassType}
+                checked={viewChecked}
+                onChange={switchPassView}
               />
-              <label class="labelCheck" for="view">パスワードを表示する</label>
+              <label className="labelCheck" htmlFor="view">パスワードを表示する</label>
             </div>
             <p>{message}</p>
-            <div class="loginBtn">
-              <button class="btn" onClick={signInEmail}>ログイン</button>
-              <input class="inputCheck" type="checkbox" id="hold" name="hold" />
-              <label class="labelBtn" for="hold">ログイン状態を保持する</label>
+            <div className="loginBtn">
+              <button className="btn" onClick={signInEmail}>ログイン</button>
+              <input
+                className="inputCheck"
+                type="checkbox" 
+                name="hold"
+                checked={holdChecked}
+                onChange={switchHoldView}
+              />
+              <label className="labelBtn" htmlFor="hold">ログイン状態を保持する</label>
             </div>
-            <div class="signUp">
-              <p class="btn">新規登録</p>
+            <div className="signUp">
+              <p className="btn">新規登録</p>
             </div>
           </div>
-          <div class="loginOther">
-            <p class="headding">ほかのアカウントでログインする</p>
-            <div class="google">
-              <div class="iconWrap">
-                <img class="icon" src="./img/icon-google.webp" alt="icon" />
+          <div className="loginOther">
+            <button className="headding" onClick={signInGoolge}>ほかのアカウントでログインする</button>
+            <div className="google">
+              <div className="iconWrap">
+                <img className="icon" src="./img/icon-google.webp" alt="icon" />
               </div>
-              <div class="btnWrap">
-                <p class="btn">ログイン</p>
+              <div className="btnWrap">
+                <p className="btn">ログイン</p>
               </div>
             </div>
           </div>

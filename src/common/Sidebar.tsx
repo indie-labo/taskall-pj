@@ -1,11 +1,9 @@
-import '../assets/css/style.css';
+import { Link, useLocation } from 'react-router-dom'
+import '@/assets/css/style.css';
 
-interface SidebarProps {
-  setView: (view: string) => void;
-  activeView: string;
-}
-
-const Sidebar: React.FC<SidebarProps> = (props) => {
+const Sidebar: React.FC<SidebarProps> = () => {
+  const pathname = useLocation().pathname
+  console.log(`見ろよ：${pathname}`)
   return(
     <aside className="l_side">
       <div className="l_side__heading">ADMIN APP</div>
@@ -13,34 +11,34 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       <div className="l_side__main">
         <ul className="l_side__main__list">
           <li className="l_side__main__list__item">
-            <button onClick={() => props.setView("dashBoard")} className={`l_side__main__list__item__text ${props.activeView === "dashBoard" ? "active" : ""}`}>
+            <Link to="/" className={`l_side__main__list__item__text ${pathname === "/" ? "active" : ""}`}>
               Dash board
-            </button>
+            </Link>
           </li>
           <li className="l_side__main__list__item">
-            <button onClick={() => props.setView("table")} className={`l_side__main__list__item__text ${props.activeView === "table" ? "active" : ""}`}>
+            <Link to="table" className={`l_side__main__list__item__text ${pathname === "/table" ? "active" : ""}`}>
               Tables
-            </button>
+            </Link>
           </li>
           <li className="l_side__main__list__item">
-            <button onClick={() => props.setView("kanban")} className={`l_side__main__list__item__text ${props.activeView === "kanban" ? "active" : ""}`}>
+            <Link to="kanban" className={`l_side__main__list__item__text ${pathname === "/kanban" ? "active" : ""}`}>
               Kanban
-            </button>
+            </Link>
           </li>
           <li className="l_side__main__list__item">
-            <button onClick={() => props.setView("gantt")} className={`l_side__main__list__item__text ${props.activeView === "gantt" ? "active" : ""}`}>
+            <Link to="gantt" className={`l_side__main__list__item__text ${pathname === "/gantt" ? "active" : ""}`}>
               Gantt chart
-            </button>
+            </Link>
           </li>
           <li className="l_side__main__list__item">
-            <button onClick={() => props.setView("chats")} className={`l_side__main__list__item__text ${props.activeView === "chats" ? "active" : ""}`}>
-              Chats
-            </button>
+            <Link to="chat" className={`l_side__main__list__item__text ${pathname === "/chat" ? "active" : ""}`}>
+              Chat
+            </Link>
           </li>
           <li className="l_side__main__list__item">
-            <button onClick={() => props.setView("fileMg")} className={`l_side__main__list__item__text ${props.activeView === "fileMg" ? "active" : ""}`}>
+            <Link to="file" className={`l_side__main__list__item__text ${pathname === "/file" ? "active" : ""}`}>
               File Manager
-            </button>
+            </Link>
           </li>
         </ul>
       </div>

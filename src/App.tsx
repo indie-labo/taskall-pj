@@ -1,32 +1,37 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "@/lib/firebase";
-import { login, logout } from "@/features/userSlice";
-import AuthRoute from "@/routes/AuthRoute";
-import LoginPage from "@/pages/LoginPage";
-import Dashboard from '@/pages/Dashboard';
-import Home from "@/components/Home";
-import ErrorPage from "@/pages/ErrorPage";
+import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+import { Route, Routes, useNavigate } from 'react-router-dom'
+import { onAuthStateChanged } from "firebase/auth"
+import { auth } from "@/lib/firebase"
+import { login, logout } from "@/features/userSlice"
+import AuthRoute from "@/routes/AuthRoute"
+import LoginPage from "@/pages/LoginPage"
+import Dashboard from '@/pages/Dashboard'
+import TableView from "@/components/TableView"
+import Chat from "@/components/Chat"
+import FileManger from "@/components/FileManeger"
+import Gantt from "@/components/Gantt"
+import Kanban from "@/components/Kanban"
+import ErrorPage from "@/pages/ErrorPage"
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const onLogin = (role: string) => dispatch(login(role));
-  const onLogOut = () => dispatch(logout());
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const onLogin = (role: string) => dispatch(login(role))
+  const onLogOut = () => dispatch(logout())
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log(user)
       if (user) {
-        onLogin("user");
-        setIsLoading(false);
-        navigate('/');
+        onLogin("user")
+        setIsLoading(false)
+        navigate('/')
       } else {
-        onLogOut();
-        setIsLoading(false);
-        navigate('/login');
+        onLogOut()
+        setIsLoading(false)
+        navigate('/login')
       }
     });
     return unsubscribe;
@@ -36,8 +41,11 @@ const App = () => {
     <Routes>
       <Route element={ <AuthRoute to="/login" isLoading={isLoading} />} >
         <Route path="/" element={<Dashboard />} errorElement={<ErrorPage />} >
-          <Route path="home" element={<Home />} />
-          <Route path="neko" element={<Home />} />
+          <Route path="table" element={<TableView />} />
+          <Route path="chat" element={<Chat />} />
+          <Route path="file" element={<FileManger />} />
+          <Route path="kanban" element={<Gantt />} />
+          <Route path="gantt" element={<Kanban />} />
         </Route>
       </Route>
       <Route path="/login" element={<LoginPage />} />

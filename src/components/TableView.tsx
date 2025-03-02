@@ -1,34 +1,28 @@
-import '../assets/css/style.css';
-import { useState } from 'react';
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from '@/lib/firebase'
+import { useState, useEffect } from 'react';
 import { TableSideView } from './index.ts';
-import iconSearch from '../assets/img/icon_search.png';
-import iconReload from '../assets/img/icon_reload.png';
-import iconPlus from '../assets/img/icon_plus.png';
-import iconClose from '../assets/img/icon_close.png';
-import iconEllipsis from '../assets/img/icon_ellipsis.png';
+import '@/assets/css/style.css';
+import iconSearch from '@/assets/img/icon_search.png';
+import iconReload from '@/assets/img/icon_reload.png';
+import iconPlus from '@/assets/img/icon_plus.png';
+import iconClose from '@/assets/img/icon_close.png';
+import iconEllipsis from '@/assets/img/icon_ellipsis.png';
 
-interface AddTask {
+interface Task {
   task: string;
   date: string;
-  name: string;
+  assign: Array<string>;
   status: string;
-  tag: string;
-  notes: string;
+  tags: Array<string>;
+  remarks: string;
 }
 
 const TableView: React.FC = () => {
   const [isSideViewOpen, setIsSideViewOpen] = useState(false);
 
   // 一旦json形式でデータ定義。最終的にはDBからデータ取得してくるようにする。
-  const [data, setData] = useState<AddTask[]>(
-    [
-      { task: "test1", date: "2025/01/01", name: "AAA", status: "未着手", tag: "work", notes: "test test test" },
-      { task: "test2", date: "2025/02/01", name: "BBB", status: "進行中", tag: "private", notes: "TEST TEST TEST" },
-      { task: "test3", date: "2025/03/01", name: "CCC", status: "完了", tag: "other", notes: "**************" },
-      { task: "test4", date: "2025/04/01", name: "aaa", status: "完了", tag: "other", notes: "11111111111" },
-      { task: "test5", date: "2025/05/01", name: "bbb", status: "完了", tag: "work", notes: "aaaaaaaaaaaaaa" },
-    ]
-  );
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   // サイドビューの開閉
   const toggleSideView = () => {
@@ -37,16 +31,40 @@ const TableView: React.FC = () => {
 
   // タスクを追加する
   const handleAddTask = (newTask: AddTask) => {
-    setData((prevData) => [...prevData, newTask]);
+    setTasks((prevData) => [...prevData, newTask]);
   }
 
   // タスクを削除する
   const handleDelete = (index: number) => {
     const confirmDelete = window.confirm("タスクを削除しますか？");
     if (confirmDelete) {
-      setData(prevData => prevData.filter((_, i) => i !== index));
+      setTasks(prevData => prevData.filter((_, i) => i !== index));
     }
-  };
+  }
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(collection(db, "tasks"), (querySnapshot) => {
+      const taskList: Task[] = querySnapshot.docs.map((doc) => {
+        const date = new Date(doc.data().date.seconds * 1000)
+        const yyyy = `${date.getFullYear()}`;
+        const MM = `0${date.getMonth() + 1}`.slice(-2);
+        const dd = `0${date.getDate()}`.slice(-2);
+        
+        return {
+          task: doc.data().task,
+          date: `${yyyy}/${MM}/${dd}`,
+          assign: doc.data().assign,
+          status: doc.data().status,
+          tags: doc.data().tags,
+          remarks: doc.data().remarks
+        }
+      })
+      console.log(taskList)
+      setTasks(taskList)
+    })
+    
+    return () => unsubscribe()
+  }, [])
 
   return(
     <div className="p_tableView">
@@ -82,17 +100,17 @@ const TableView: React.FC = () => {
           <div className="p_tableView__taskWrap__list__listOverflow">
             <table className="p_tableView__taskWrap__list__tbodyContents">
               <tbody className="p_tableView__taskWrap__list__tbodyContents__contents">
-                {data.map((item, index) => (
+                {tasks.map((item, index) => (
                   <tr key={index.toString()}>
                     <td className="btnArea">
                       <button className="btnDelete" onClick={() => handleDelete(index)}><img src={iconClose} alt="" /></button>
                     </td>
                     <td className="task">{item.task}</td>
                     <td className="date">{item.date}</td>
-                    <td className="name">{item.name}</td>
+                    <td className="name">{item.assign.join(',')}</td>
                     <td className="status">{item.status}</td>
-                    <td className="tag">{item.tag}</td>
-                    <td className="notes">{item.notes}</td>
+                    <td className="tag">{item.assign.join(',')}</td>
+                    <td className="notes">{item.remarks}</td>
                   </tr>
                 ))}
               </tbody>
