@@ -1,22 +1,48 @@
-import { useState } from 'react'
-import {Sidebar, Header, MainView} from './common/index.ts'
-import './App.css'
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/lib/firebase";
+import { login, logout } from "@/features/userSlice";
+import AuthRoute from "@/routes/AuthRoute";
+import LoginPage from "@/pages/LoginPage";
+import Dashboard from '@/pages/Dashboard';
+import Home from "@/components/Home";
+import ErrorPage from "@/pages/ErrorPage";
 
-function App() {
-  const [view, setView] = useState("initialState");
+const App = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const onLogin = (role: string) => dispatch(login(role));
+  const onLogOut = () => dispatch(logout());
 
-  console.log("test");
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        onLogin("user");
+        setIsLoading(false);
+        navigate('/');
+      } else {
+        onLogOut();
+        setIsLoading(false);
+        navigate('/login');
+      }
+    });
+    return unsubscribe;
+  }, []);
 
   return (
-    <div className='l_common'>
-      <Sidebar setView={setView} activeView={view} />
+    <Routes>
+      <Route element={ <AuthRoute to="/login" isLoading={isLoading} />} >
+        <Route path="/" element={<Dashboard />} errorElement={<ErrorPage />} >
+          <Route path="home" element={<Home />} />
+          <Route path="neko" element={<Home />} />
+        </Route>
+      </Route>
+      <Route path="/login" element={<LoginPage />} />
+    </Routes>
+  );
+};
 
-      <div className='l_mainWrap'>
-        <Header />
-        <MainView view={view} />
-      </div>
-    </div>
-  )
-}
-
-export default App
+export default App;
