@@ -90,8 +90,6 @@
         }
       }
     }
-
-    
   }
   // ------------------------------------------------
 
@@ -154,12 +152,12 @@
     
           tr {
             th {
-              padding: 5px;
+              padding: 5px 10px;
               text-align: left;
               border-bottom: 1px solid #EBEDF0;
             }
             .blankSpace {
-              width: 3%;
+              width: 4%;
             }
             .task {
               width: 25%;
@@ -167,16 +165,16 @@
             .date {
               width: 12%;
             }
-            .name {
-              width: 12%;
+            .assign {
+              width: 14%;
             }
             .status {
               width: 12%;
             }
-            .tag {
+            .tags {
               width: 8%;
             }
-            .notes {
+            .remarks {
               width: 100%;
             }
           }
@@ -204,12 +202,12 @@
             }
     
             td {
-              padding: 5px;
+              padding: 5px 10px;
               text-align: left;
               border-bottom: 1px solid #EBEDF0;
             }
             .btnArea {
-              width: 3%;
+              width: 4%;
               .btnDelete {
                 width: 10px;
               }
@@ -220,16 +218,16 @@
             .date {
               width: 12%;
             }
-            .name {
-              width: 12%;
+            .assign {
+              width: 14%;
             }
             .status {
               width: 12%;
             }
-            .tag {
+            .tags {
               width: 8%;
             }
-            .notes {
+            .remarks {
               width: 100%;
             }
           }

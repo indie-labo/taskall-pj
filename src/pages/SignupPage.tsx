@@ -1,18 +1,18 @@
 // ※コメントアウトしてるやつはLoginpage.tsx からのコピー。不要なものは最後に消す
 // ==========================================================
-// import React, { useState } from 'react'
-// import { useNavigate, useLocation } from 'react-router-dom'
+// import React, { useState } from 'react';
+// import { useNavigate, useLocation } from 'react-router-dom';
 // import {
 //   signInWithEmailAndPassword,
 //   signInWithPopup,
 //   GoogleAuthProvider,
 //   browserLocalPersistence,
 //   browserSessionPersistence
-// } from 'firebase/auth'
-// import { auth } from '@/lib/firebase'
-// import Message from '@/lib/message.json'
-// import { UserState, selectUser } from '@/features/userSlice'
-// import { useSelector } from 'react-redux'
+// } from 'firebase/auth';
+// import { auth } from '@/lib/firebase';
+// import Message from '@/lib/message.json';
+// import { UserState, selectUser } from '@/features/userSlice';
+// import { useSelector } from 'react-redux';
 // ==========================================================
 import '@/assets/css/style.css';
 

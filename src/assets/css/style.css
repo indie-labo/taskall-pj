@@ -19,6 +19,10 @@ html {
   word-break: break-word;
 }
 
+h1 {
+  font-size: 32px;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -342,12 +346,12 @@ table {
   font-weight: 500;
 }
 .p_tableView__taskWrap__list__theadContents__title tr th {
-  padding: 5px;
+  padding: 5px 10px;
   text-align: left;
   border-bottom: 1px solid #EBEDF0;
 }
 .p_tableView__taskWrap__list__theadContents__title tr .blankSpace {
-  width: 3%;
+  width: 4%;
 }
 .p_tableView__taskWrap__list__theadContents__title tr .task {
   width: 25%;
@@ -355,16 +359,16 @@ table {
 .p_tableView__taskWrap__list__theadContents__title tr .date {
   width: 12%;
 }
-.p_tableView__taskWrap__list__theadContents__title tr .name {
-  width: 12%;
+.p_tableView__taskWrap__list__theadContents__title tr .assign {
+  width: 14%;
 }
 .p_tableView__taskWrap__list__theadContents__title tr .status {
   width: 12%;
 }
-.p_tableView__taskWrap__list__theadContents__title tr .tag {
+.p_tableView__taskWrap__list__theadContents__title tr .tags {
   width: 8%;
 }
-.p_tableView__taskWrap__list__theadContents__title tr .notes {
+.p_tableView__taskWrap__list__theadContents__title tr .remarks {
   width: 100%;
 }
 .p_tableView__taskWrap__list__tbodyContents {
@@ -382,12 +386,12 @@ table {
   font-weight: 500;
 }
 .p_tableView__taskWrap__list__tbodyContents__contents tr td {
-  padding: 5px;
+  padding: 5px 10px;
   text-align: left;
   border-bottom: 1px solid #EBEDF0;
 }
 .p_tableView__taskWrap__list__tbodyContents__contents tr .btnArea {
-  width: 3%;
+  width: 4%;
 }
 .p_tableView__taskWrap__list__tbodyContents__contents tr .btnArea .btnDelete {
   width: 10px;
@@ -398,16 +402,16 @@ table {
 .p_tableView__taskWrap__list__tbodyContents__contents tr .date {
   width: 12%;
 }
-.p_tableView__taskWrap__list__tbodyContents__contents tr .name {
-  width: 12%;
+.p_tableView__taskWrap__list__tbodyContents__contents tr .assign {
+  width: 14%;
 }
 .p_tableView__taskWrap__list__tbodyContents__contents tr .status {
   width: 12%;
 }
-.p_tableView__taskWrap__list__tbodyContents__contents tr .tag {
+.p_tableView__taskWrap__list__tbodyContents__contents tr .tags {
   width: 8%;
 }
-.p_tableView__taskWrap__list__tbodyContents__contents tr .notes {
+.p_tableView__taskWrap__list__tbodyContents__contents tr .remarks {
   width: 100%;
 }
 .p_tableView__taskWrap__list__listOverflow {
@@ -462,6 +466,182 @@ table {
   color: #fff;
   background-color: #047591;
   border-radius: 5px;
+}
+
+.p_login {
+  margin: 50px 100px;
+}
+.p_login .title {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+.p_login .contentsBg {
+  width: 940px;
+  padding: 20px;
+  background-color: #F8F8F8;
+}
+.p_login .contentsBg .contents {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 80px;
+  background-color: #fff;
+}
+.p_login .contentsBg .contents .login {
+  width: 50%;
+  margin-right: 80px;
+  padding-right: 100px;
+  border-right: 2px solid #EAEAEA;
+}
+.p_login .contentsBg .contents .login .loginId {
+  margin-bottom: 50px;
+}
+.p_login .contentsBg .contents .login .loginId .labelId {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.p_login .contentsBg .contents .login .loginId .inputId {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #FDF4F5;
+  border: 1px solid #DEDEDE;
+}
+.p_login .contentsBg .contents .login .loginId .remarks {
+  font-size: 14px;
+}
+.p_login .contentsBg .contents .login .loginPass {
+  margin-bottom: 50px;
+}
+.p_login .contentsBg .contents .login .loginPass .labelPass {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+}
+.p_login .contentsBg .contents .login .loginPass .inputPass {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #FDF4F5;
+  border: 1px solid #DEDEDE;
+}
+.p_login .contentsBg .contents .login .loginBtn {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.p_login .contentsBg .contents .login .loginBtn .btn {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 250px;
+  height: 45px;
+  margin: 0 auto 5px auto;
+  font-size: 18px;
+  color: #fff;
+  background-color: #CC0100;
+}
+.p_login .contentsBg .contents .login .loginBtn .btn::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.p_login .contentsBg .contents .login .loginBtn .comment {
+  text-align: left;
+}
+.p_login .contentsBg .contents .login .signUp .btn {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 250px;
+  height: 45px;
+  margin: 0 auto 5px auto;
+  font-size: 18px;
+  color: #CC0100;
+  border: 1px solid #CC0100;
+}
+.p_login .contentsBg .contents .loginOther {
+  width: 50%;
+}
+.p_login .contentsBg .contents .loginOther .headding {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.p_login .contentsBg .contents .loginOther .google {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 10px;
+}
+.p_login .contentsBg .contents .loginOther .google .iconWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 45px;
+  height: 45px;
+  border: 1px solid #4284F3;
+}
+.p_login .contentsBg .contents .loginOther .google .iconWrap .icon {
+  width: 50%;
+  height: 50%;
+}
+.p_login .contentsBg .contents .loginOther .google .btnWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 180px;
+  height: 45px;
+  background-color: #4284F3;
+  border: 1px solid #4284F3;
+}
+.p_login .contentsBg .contents .loginOther .google .btnWrap .btn {
+  font-size: 18px;
+  color: #fff;
+}
+.p_login .contentsBg .contents .inputCheck:hover {
+  cursor: pointer;
 }
 
 .p_signup {

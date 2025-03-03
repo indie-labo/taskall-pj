@@ -1,18 +1,12 @@
-import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
-import { Route, Routes, useNavigate } from 'react-router-dom'
-import { onAuthStateChanged } from "firebase/auth"
-import { auth } from "@/lib/firebase"
-import { login, logout } from "@/features/userSlice"
-import AuthRoute from "@/routes/AuthRoute"
-import LoginPage from "@/pages/LoginPage"
-import Dashboard from '@/pages/Dashboard'
-import TableView from "@/components/TableView"
-import Chat from "@/components/Chat"
-import FileManger from "@/components/FileManeger"
-import Gantt from "@/components/Gantt"
-import Kanban from "@/components/Kanban"
-import ErrorPage from "@/pages/ErrorPage"
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
+import { login, logout } from '@/features/userSlice';
+import AuthRoute from '@/routes/AuthRoute';
+import { ErrorPage, LoginPage, Dashboard} from '@/pages/index';
+import { TableView, Kanban, Gantt, Chat, FileManeger} from '@/components/index';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -43,7 +37,7 @@ const App = () => {
         <Route path="/" element={<Dashboard />} errorElement={<ErrorPage />} >
           <Route path="table" element={<TableView />} />
           <Route path="chat" element={<Chat />} />
-          <Route path="file" element={<FileManger />} />
+          <Route path="file" element={<FileManeger />} />
           <Route path="kanban" element={<Gantt />} />
           <Route path="gantt" element={<Kanban />} />
         </Route>

@@ -1,8 +1,7 @@
-import { Outlet } from 'react-router-dom'
-import { TableView } from '../component/index.ts';
+import { Outlet } from 'react-router-dom';
 import '@/assets/css/style.css';
 
-const MainView: React.FC<MainViewProps> = () => {
+const MainView: React.FC = () => {
   return(
     <main className="l_mainView">
       <div className="l_mainView__contents">
