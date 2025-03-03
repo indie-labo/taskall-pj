@@ -590,7 +590,7 @@ table {
   width: 50%;
 }
 .p_login .contentsBg .contents .loginOther .headding {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 20px;
   font-weight: bold;
 }
@@ -639,6 +639,9 @@ table {
 .p_login .contentsBg .contents .loginOther .google .btnWrap .btn {
   font-size: 18px;
   color: #fff;
+}
+.p_login .contentsBg .contents .inputCheck {
+  margin-right: 3px;
 }
 .p_login .contentsBg .contents .inputCheck:hover {
   cursor: pointer;
