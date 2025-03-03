@@ -1,0 +1,125 @@
+.p_signup {
+  min-width: 550px;
+  margin: 50px 100px;
+
+  .title {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+
+  .contentsBg {
+    width: 940px;
+    padding: 20px;
+    background-color: #F8F8F8;
+
+    .contents {
+      padding: 80px;
+      background-color: #fff;
+
+      .layout {
+        width: 300px;
+
+        .signupId {
+          margin-bottom: 50px;
+
+          .labelId {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+          }
+
+          .inputId {
+            display: block;
+            width: 100%;
+            margin-bottom: 5px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #FDF4F5;
+            border: 1px solid #DEDEDE;
+          }
+
+          .remarks {
+            font-size: 14px;
+          }
+        }
+
+        .signupPass {
+          margin-bottom: 50px;
+
+          .first {
+            margin-bottom: 20px;
+          }
+
+          .labelPass {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+          }
+
+          .inputPass {
+            display: block;
+            width: 100%;
+            margin-bottom: 5px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #FDF4F5;
+            border: 1px solid #DEDEDE;
+          }
+        }
+
+        .signupBtn {
+          margin-bottom: 30px;
+          text-align: center;
+
+          .btn {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+            height: 45px;
+            margin: 0 auto 5px auto;
+            font-size: 18px;
+            color: #fff;
+            background-color: #CC0100;
+
+            &::after {
+              content: "";
+              position: absolute;
+              right: 20px;
+              display: block;
+              width: 8px;
+              height: 8px;
+              border-top: 2px solid #fff;
+              border-right: 2px solid #fff;
+              transform: rotate(45deg);
+            }
+          }
+        }
+
+        .pageBack {
+          .btn {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+            height: 45px;
+            margin: 0 auto 5px auto;
+            font-size: 18px;
+            color: #CC0100;
+            border: 1px solid #CC0100;
+          }
+        }
+      }
+
+      // ========================
+      .inputCheck {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
