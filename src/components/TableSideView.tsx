@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import '../assets/css/style.css';
-import iconClose from '../assets/img/icon_close.png';
+import '@/assets/css/style.css';
+import iconClose from '@/assets/img/icon_close.png';
 
 interface AddTask {
   task: string;
   date: string;
-  name: string;
+  assign: Array<string>;
   status: string;
-  tag: string;
-  notes: string;
+  tags: Array<string>;
+  remarks: string;
 }
 
 interface TableSideViewProps {
@@ -21,11 +21,19 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
   // タスク追加時のstate管理
   const [task, setTask] = useState("");
   const [date, setDate] = useState("");
-  const [name, setName] = useState("");
+  const [assign, setAssign] = useState<string[]>([]);
   const [status, setStatus] = useState("");
-  const [tag, setTag] = useState("");
-  const [notes, setNotes] = useState("");
+  const [tags, setTags] = useState<string[]>([]);
+  const [remarks, setRemarks] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+// assignとtagsに入力された値を配列に変換
+  const handleAssignChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAssign(e.target.value.split(","));
+  };
+  const handleTagsChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setTags(Array.from(e.target.selectedOptions, (option) => option.value));
+  };
 
   // タスク追加時、jsonに値を送る処理
   const handleSubmit = (e: React.FormEvent) => {
@@ -40,15 +48,15 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
     setErrorMessage('');
 
     // 新しいタスクを作成し、親コンポーネントに渡す
-    props.onAddTask({ task, date, name, status, tag, notes });
+    props.onAddTask({ task, date, assign, status, tags, remarks });
 
     // 入力フィールドをリセット
     setTask("");
     setDate("");
-    setName("");
+    setAssign([]);
     setStatus("");
-    setTag("");
-    setNotes("");
+    setTags([]);
+    setRemarks("");
   }
 
   // サイドビューを閉じる
@@ -90,7 +98,7 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
 
             <li className="block">
               <p className="item">*担当者</p>
-              <input className="field" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+              <input className="field" type="text" value={assign.join(",")} onChange={handleAssignChange} />
             </li>
 
             <li className="block">
@@ -104,7 +112,7 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
 
             <li className="block">
               <p className="item">*タグ</p>
-              <select className="field" value={tag} onChange={(e) => setTag(e.target.value)}>
+              <select className="field" multiple value={tags.join(",")} onChange={handleTagsChange}>
                 <option value="work">work</option>
                 <option value="private">private</option>
                 <option value="other">other</option>
@@ -113,7 +121,7 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
 
             <li className="block">
               <p className="item">*Notes</p>
-              <textarea className="field textArea" value={notes} onChange={(e) => setNotes(e.target.value)} />
+              <textarea className="field textArea" value={remarks} onChange={(e) => setRemarks(e.target.value)} />
             </li>
           </ul>
 

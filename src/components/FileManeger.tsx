@@ -1,7 +1,11 @@
-export default function FileManger() {
-    return (
-      <div>
-        <h1>FileManger</h1>
-      </div>
-    );
-  }
+import '@/assets/css/style.css';
+
+const FileManger: React.FC = () => {
+  return (
+    <div>
+      <h1>FileManger</h1>
+    </div>
+  );
+}
+
+export default FileManger

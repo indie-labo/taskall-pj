@@ -1,7 +1,7 @@
-import { collection, onSnapshot } from "firebase/firestore";
-import { db } from '@/lib/firebase'
 import { useState, useEffect } from 'react';
-import { TableSideView } from './index.ts';
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from '@/lib/firebase';
+import { TableSideView } from './index';
 import '@/assets/css/style.css';
 import iconSearch from '@/assets/img/icon_search.png';
 import iconReload from '@/assets/img/icon_reload.png';
@@ -30,7 +30,7 @@ const TableView: React.FC = () => {
   };
 
   // タスクを追加する
-  const handleAddTask = (newTask: AddTask) => {
+  const handleAddTask = (newTask: Task) => {
     setTasks((prevData) => [...prevData, newTask]);
   }
 
@@ -89,10 +89,10 @@ const TableView: React.FC = () => {
                 <th className="blankSpace"></th>
                 <th className="task">タスク名</th>
                 <th className="date">日付</th>
-                <th className="name">担当者</th>
+                <th className="assign">担当者</th>
                 <th className="status">ステータス</th>
-                <th className="tag">タグ</th>
-                <th className="notes">Notes</th>
+                <th className="tags">タグ</th>
+                <th className="remarks">Notes</th>
               </tr>
             </thead>
           </table>
@@ -107,10 +107,10 @@ const TableView: React.FC = () => {
                     </td>
                     <td className="task">{item.task}</td>
                     <td className="date">{item.date}</td>
-                    <td className="name">{item.assign.join(',')}</td>
+                    <td className="assign">{item.assign.join(',')}</td>
                     <td className="status">{item.status}</td>
-                    <td className="tag">{item.assign.join(',')}</td>
-                    <td className="notes">{item.remarks}</td>
+                    <td className="tags">{item.tags.join(',')}</td>
+                    <td className="remarks">{item.remarks}</td>
                   </tr>
                 ))}
               </tbody>

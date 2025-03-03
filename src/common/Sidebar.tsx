@@ -1,9 +1,9 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom';
 import '@/assets/css/style.css';
 
-const Sidebar: React.FC<SidebarProps> = () => {
+const Sidebar: React.FC = () => {
   const pathname = useLocation().pathname
-  console.log(`見ろよ：${pathname}`)
+  
   return(
     <aside className="l_side">
       <div className="l_side__heading">ADMIN APP</div>

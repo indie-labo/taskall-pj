@@ -1,7 +1,9 @@
-export default function Home() {
+const Home: React.FC = () => {
   return (
     <div>
-      <h1>HOME</h1>
+      <h1>Home</h1>
     </div>
   );
 }
+
+export default Home

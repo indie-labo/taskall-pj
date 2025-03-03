@@ -1,18 +1,19 @@
-import { useDispatch } from "react-redux"
-import { useNavigate } from 'react-router-dom'
-import { logout } from "@/features/userSlice"
-import { signOut } from "firebase/auth";
-import { auth } from "@/lib/firebase"
-import '../assets/css/style.css';
+import { signOut } from 'firebase/auth';
+import { auth } from '@/lib/firebase'
+import '@/assets/css/style.css';
 import headerLogo from '../assets/img/icon_tetoria.png';
-import headerNotification from '../assets/img/icon_notification.png';
-import headerSetting from '../assets/img/icon_setting.png';
-import headerProfile from '../assets/img/icon_profile.png';
+import headerNotification from '@/assets/img/icon_notification.png';
+import headerSetting from '@/assets/img/icon_setting.png';
+import headerProfile from '@/assets/img/icon_profile.png';
+// import { useDispatch } from 'react-redux';
+// import { useNavigate } from 'react-router-dom';
+// import { logout } from '@/features/userSlice';
 
 const Header: React.FC = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const onLogout = () => dispatch(logout());
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // const onLogout = () => dispatch(logout());
+  
   return(
     <header className="l_header">
       <div className="l_header__logo">

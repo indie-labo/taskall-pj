@@ -10,4 +10,7 @@ export default defineConfig({
     tsconfigPaths(),
     env({ prefix: "VITE",  mountedPath: "process.env" })
   ],
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
+  },
 })
