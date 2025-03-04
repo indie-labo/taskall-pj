@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -11,15 +11,13 @@ import { Link } from 'react-router-dom';
 import Message from '@/lib/message.json';
 import '@/assets/css/style.css';
 import iconGoogle from '@/assets/img/icon_google.png';
-// import { useNavigate, useLocation } from 'react-router-dom';
-// import { UserState, selectUser } from '@/features/userSlice';
-// import { useSelector } from 'react-redux';
 
 const LoginPage = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [viewChecked, setViewChecked] = useState<boolean>(false)
   const [holdChecked, setHoldChecked] = useState<boolean>(false)
+  const [isVerified, setIsVerified] = useState<boolean>(true);
   const [message, setMessage] = useState<string | null>(null)
 
   // const navigate = useNavigate()
@@ -65,12 +63,17 @@ const LoginPage = () => {
     }
   }
 
+  useEffect(() => {
+    setIsVerified(auth.currentUser ? auth.currentUser.emailVerified : true)
+  }, [])
+
   return (
     <div className="p_login">
-      <div className="messageArea">
+      {!isVerified && (
+        <div className="messageArea">
         <p className="message">ご登録のメールアドレスに認証用メールを送信しました。認証後、再度ログインしてください。</p>
       </div>
-
+      )}
       <h1 className="title">会員ログイン</h1>
       <div className="contentsBg">
         <div className="contents">

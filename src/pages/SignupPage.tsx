@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
@@ -22,7 +22,7 @@ const SignupPage = () => {
   // const location = useLocation()
   // const { from }: { from: string }  = location.state as { from: string } || { from: null }
   // const user: UserState = useSelector(selectUser)
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const errorMessages: {[key: string]: string} = Message.firebase.error
 
   const switchPassView = () => setViewChecked(!viewChecked)
@@ -32,7 +32,6 @@ const SignupPage = () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
       await sendEmailVerification(userCredential.user)
-      navigate('/login')
     } catch (error: any) {
       const errorCode: string = error.code
       switch (errorCode) {
