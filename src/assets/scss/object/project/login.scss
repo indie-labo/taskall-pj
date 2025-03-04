@@ -1,5 +1,17 @@
 .p_login {
-  margin: 50px 100px;
+  margin: 80px 100px 50px;
+
+  .messageArea {
+    position: fixed;
+    top: 0;
+    width: 940px;
+    padding: 10px 15px;
+    background-color: rgba(242, 109, 109, .8);
+
+    .message {
+      font-size: 18px;
+    }
+  }
 
   .title {
     font-size: 32px;

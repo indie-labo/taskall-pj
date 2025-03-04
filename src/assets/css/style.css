@@ -469,7 +469,17 @@ table {
 }
 
 .p_login {
-  margin: 50px 100px;
+  margin: 80px 100px 50px;
+}
+.p_login .messageArea {
+  position: fixed;
+  top: 0;
+  width: 940px;
+  padding: 10px 15px;
+  background-color: rgba(242, 109, 109, 0.8);
+}
+.p_login .messageArea .message {
+  font-size: 18px;
 }
 .p_login .title {
   font-size: 32px;

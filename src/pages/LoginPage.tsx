@@ -67,6 +67,10 @@ const LoginPage = () => {
 
   return (
     <div className="p_login">
+      <div className="messageArea">
+        <p className="message">ご登録のメールアドレスに認証用メールを送信しました。認証後、再度ログインしてください。</p>
+      </div>
+
       <h1 className="title">会員ログイン</h1>
       <div className="contentsBg">
         <div className="contents">
