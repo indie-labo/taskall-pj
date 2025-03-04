@@ -7,6 +7,7 @@ import {
   browserSessionPersistence
 } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
+import { Link } from 'react-router-dom';
 import Message from '@/lib/message.json';
 import '@/assets/css/style.css';
 import iconGoogle from '@/assets/img/icon_google.png';
@@ -17,7 +18,6 @@ import iconGoogle from '@/assets/img/icon_google.png';
 const LoginPage = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const [passView, setPassView] = useState<string>('password')
   const [viewChecked, setViewChecked] = useState<boolean>(false)
   const [holdChecked, setHoldChecked] = useState<boolean>(false)
   const [message, setMessage] = useState<string | null>(null)
@@ -28,11 +28,7 @@ const LoginPage = () => {
   // const user: UserState = useSelector(selectUser)
   const errorMessages: {[key: string]: string} = Message.firebase.error
 
-  const switchPassView = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const isChecked = event.target.checked
-    setViewChecked(isChecked)
-    setPassView(isChecked ? 'text' : 'password')
-  }
+  const switchPassView = () => setViewChecked(!viewChecked)
 
   const switchHoldView = (event: React.ChangeEvent<HTMLInputElement>) => {
     setHoldChecked(event.target.checked)
@@ -91,8 +87,8 @@ const LoginPage = () => {
               <label className="labelPass" htmlFor="userPass">パスワード</label>
               <input
                 className="inputPass"
-                type={passView}
                 name="userPass"
+                type={viewChecked ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -123,18 +119,18 @@ const LoginPage = () => {
             </div>
 
             <div className="signUp">
-              <p className="btn">新規登録</p>
+              <Link to="/signup" className="btn">新規登録</Link>
             </div>
           </div>
 
           <div className="loginOther">
-            <button className="headding" onClick={signInGoolge}>ほかのアカウントでログインする</button>
+            <p className="headding">ほかのアカウントでログインする</p>
             <div className="google">
               <div className="iconWrap">
                 <img className="icon" src={iconGoogle} alt="icon" />
               </div>
               <div className="btnWrap">
-                <p className="btn">ログイン</p>
+                <button className="btn" onClick={signInGoolge}>ログイン</button>
               </div>
             </div>
           </div>

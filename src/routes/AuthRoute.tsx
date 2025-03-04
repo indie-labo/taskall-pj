@@ -9,12 +9,11 @@ interface AuthProps {
 const AuthRoute = (props: AuthProps) => {
   const location = useLocation();
   const { to, isLoading } = props;
-  console.log(location.pathname);
-  console.log(auth.currentUser);
+  // console.log(location.pathname);
+  // console.log(auth.currentUser);
   if (isLoading) {
     return null;
   }
-
   if (!auth.currentUser) {
     return <Navigate to={to} state={{ from: location.pathname }} replace />
   }

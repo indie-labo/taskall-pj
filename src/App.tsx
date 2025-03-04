@@ -5,7 +5,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { login, logout } from '@/features/userSlice';
 import AuthRoute from '@/routes/AuthRoute';
-import { ErrorPage, LoginPage, Dashboard} from '@/pages/index';
+import { ErrorPage, LoginPage, Dashboard, SignupPage } from '@/pages/index';
 import { TableView, Kanban, Gantt, Chat, FileManeger} from '@/components/index';
 
 const App = () => {
@@ -43,6 +43,7 @@ const App = () => {
         </Route>
       </Route>
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage />} />
     </Routes>
   );
 };
