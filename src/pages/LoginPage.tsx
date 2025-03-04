@@ -71,6 +71,10 @@ const LoginPage = () => {
 
   return (
     <div className="p_login">
+      <div className="messageArea">
+        <p className="message">ご登録のメールアドレスに認証用メールを送信しました。認証後、再度ログインしてください。</p>
+      </div>
+
       <h1 className="title">会員ログイン</h1>
       <div className="contentsBg">
         <div className="contents">
@@ -123,7 +127,7 @@ const LoginPage = () => {
             </div>
 
             <div className="signUp">
-              <p className="btn">新規登録</p>
+              <button className="btn">新規登録</button>
             </div>
           </div>
 
@@ -134,7 +138,7 @@ const LoginPage = () => {
                 <img className="icon" src={iconGoogle} alt="icon" />
               </div>
               <div className="btnWrap">
-                <p className="btn">ログイン</p>
+                <button className="btn">ログイン</button>
               </div>
             </div>
           </div>
