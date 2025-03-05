@@ -104,6 +104,7 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
             <li className="block">
               <p className="item">*ステータス</p>
               <select className="field" value={status} onChange={(e) => setStatus(e.target.value)}>
+                <option value=""></option>
                 <option value="未着手">未着手</option>
                 <option value="進行中">進行中</option>
                 <option value="完了">完了</option>
@@ -112,7 +113,8 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
 
             <li className="block">
               <p className="item">*タグ</p>
-              <select className="field" multiple value={tags.join(",")} onChange={handleTagsChange}>
+              <select className="field" value={tags.join(",")} onChange={handleTagsChange}>
+                <option value=""></option>
                 <option value="work">work</option>
                 <option value="private">private</option>
                 <option value="other">other</option>
