@@ -27,19 +27,25 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
   const [remarks, setRemarks] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-// assignとtagsに入力された値を配列に変換
+  // 担当者に入力された値を配列に変更
   const handleAssignChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAssign(e.target.value.split(","));
   };
+  // タグ選択の処理
   const handleTagsChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setTags(Array.from(e.target.selectedOptions, (option) => option.value));
+    const selectedValues = Array.from(e.target.selectedOptions, (option) => option.value);
+    setTags((prevTags) => [...new Set([...prevTags, ...selectedValues])]);
+  };
+  // 選択中のタグを削除する
+  const handleRemoveTag = (tag: string) => {
+    setTags((prevTags) => prevTags.filter((t) => t !== tag));
   };
 
-  // タスク追加時、jsonに値を送る処理
+  // タスク追加処理
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // 空白の場合、値を送信しない
+    // タスク名が空白の場合、値を送信しない
     if (!task ) {
       setErrorMessage('※タスク名を入力してください');
       return;
@@ -113,12 +119,21 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
 
             <li className="block">
               <p className="item">*タグ</p>
-              <select className="field" value={tags.join(",")} onChange={handleTagsChange}>
-                <option value=""></option>
+              <select className="field tag" multiple value={tags} onChange={handleTagsChange}>
                 <option value="work">work</option>
                 <option value="private">private</option>
                 <option value="other">other</option>
               </select>
+
+              {/* 選択中のタグを表示 */}
+              <div className="selectTag">
+                {tags.map((tag) => (
+                  <span className="itemTag" key={tag}>
+                    {tag}
+                    <button className="btnRemoveTag" onClick={() => handleRemoveTag(tag)}> ×</button>
+                  </span>
+                ))}
+              </div>
             </li>
 
             <li className="block">
