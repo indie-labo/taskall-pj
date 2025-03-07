@@ -72,7 +72,7 @@
               border: 1px solid #a9a9a9;
               border-radius: 5px;
 
-              &.tag {
+              &.multiSelect {
                 height: auto;
               }
 
@@ -81,11 +81,12 @@
               }
             }
 
-            .selectTag {
-              .itemTag {
+            .selectItemWrap {
+              .selectItem {
                 margin-right: 12px;
+                font-size: 14px;
 
-                .btnRemoveTag {
+                .btnRemoveItem {
                   margin-left: 3px;
                   font-size: 20px;
                   font-weight: bold;
@@ -335,7 +336,7 @@
                 border: 1px solid #a9a9a9;
                 border-radius: 5px;
 
-                &.tag {
+                &.multiSelect {
                   height: auto;
                 }
 
@@ -344,11 +345,12 @@
                 }
               }
 
-              .selectTag {
-                .itemTag {
+              .selectItemWrap {
+                .selectItem {
                   margin-right: 12px;
-
-                  .btnRemoveTag {
+                  font-size: 14px;
+  
+                  .btnRemoveItem {
                     margin-left: 3px;
                     font-size: 20px;
                     font-weight: bold;

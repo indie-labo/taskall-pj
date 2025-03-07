@@ -73,10 +73,16 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
     };
   }, [props.onClose]);
 
-  // 担当者に入力された値を配列に変更
-  const handleAssignChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAssign(e.target.value.split(","));
+  // 担当者選択の処理
+  const handleAssignChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValues = Array.from(e.target.selectedOptions, (option) => option.value);
+    setAssign((prevAssign) => [...new Set([...prevAssign, ...selectedValues])]);
   };
+  // 選択中の担当者を削除する
+  const handleRemoveAssign = (assign: string) => {
+    setAssign((prevAssign) => prevAssign.filter((t) => t !== assign));
+  };
+
   // タグ選択の処理
   const handleTagsChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValues = Array.from(e.target.selectedOptions, (option) => option.value);
@@ -87,7 +93,7 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
     setTags((prevTags) => prevTags.filter((t) => t !== tag));
   };
 
-  
+
   // ---------------------------------------------------------------
   return(
     <div id="sideView" className={`p_tableView__sideView ${props.isOpen ? "open" : ""}`}>
@@ -111,7 +117,21 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
 
             <li className="block">
               <p className="item">*担当者</p>
-              <input className="field" type="text" value={assign.join(",")} onChange={handleAssignChange} />
+              <select className="field multiSelect" multiple value={assign} onChange={handleAssignChange}>
+                <option value="hoge">hoge</option>
+                <option value="fuga">fuga</option>
+                <option value="piyo">piyo</option>
+              </select>
+
+              {/* 選択中のタグを表示 */}
+              <div className="selectItemWrap">
+                {assign.map((name) => (
+                  <span className="selectItem" key={name}>
+                    {name}
+                    <button className="btnRemoveItem" onClick={() => handleRemoveAssign(name)}> ×</button>
+                  </span>
+                ))}
+              </div>
             </li>
 
             <li className="block">
@@ -126,18 +146,18 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
 
             <li className="block">
               <p className="item">*タグ</p>
-              <select className="field tag" multiple value={tags} onChange={handleTagsChange}>
+              <select className="field multiSelect" multiple value={tags} onChange={handleTagsChange}>
                 <option value="work">work</option>
                 <option value="private">private</option>
                 <option value="other">other</option>
               </select>
 
               {/* 選択中のタグを表示 */}
-              <div className="selectTag">
+              <div className="selectItemWrap">
                 {tags.map((tag) => (
-                  <span className="itemTag" key={tag}>
+                  <span className="selectItem" key={tag}>
                     {tag}
-                    <button className="btnRemoveTag" onClick={() => handleRemoveTag(tag)}> ×</button>
+                    <button className="btnRemoveItem" onClick={() => handleRemoveTag(tag)}> ×</button>
                   </span>
                 ))}
               </div>
