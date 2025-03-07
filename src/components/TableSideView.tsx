@@ -15,10 +15,13 @@ interface TableSideViewProps {
   isOpen: boolean;
   onClose: () => void;
   onAddTask: (task: AddTask) => void;
+  // onAssignChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  // onTagsChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  // onRemoveTag: (tag: string) => void;
 }
 
 const TableSideView: React.FC<TableSideViewProps> = (props) => {
-  // タスク追加時のstate管理
+  // 新規タスク追加時のstate管理
   const [task, setTask] = useState("");
   const [date, setDate] = useState("");
   const [assign, setAssign] = useState<string[]>([]);
@@ -27,20 +30,8 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
   const [remarks, setRemarks] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  // 担当者に入力された値を配列に変更
-  const handleAssignChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAssign(e.target.value.split(","));
-  };
-  // タグ選択の処理
-  const handleTagsChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedValues = Array.from(e.target.selectedOptions, (option) => option.value);
-    setTags((prevTags) => [...new Set([...prevTags, ...selectedValues])]);
-  };
-  // 選択中のタグを削除する
-  const handleRemoveTag = (tag: string) => {
-    setTags((prevTags) => prevTags.filter((t) => t !== tag));
-  };
 
+  // ---------------------------------------------------------------
   // タスク追加処理
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -82,6 +73,22 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
     };
   }, [props.onClose]);
 
+  // 担当者に入力された値を配列に変更
+  const handleAssignChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAssign(e.target.value.split(","));
+  };
+  // タグ選択の処理
+  const handleTagsChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValues = Array.from(e.target.selectedOptions, (option) => option.value);
+    setTags((prevTags) => [...new Set([...prevTags, ...selectedValues])]);
+  };
+  // 選択中のタグを削除する
+  const handleRemoveTag = (tag: string) => {
+    setTags((prevTags) => prevTags.filter((t) => t !== tag));
+  };
+
+  
+  // ---------------------------------------------------------------
   return(
     <div id="sideView" className={`p_tableView__sideView ${props.isOpen ? "open" : ""}`}>
       <div className="p_tableView__sideView__smoke"></div>
