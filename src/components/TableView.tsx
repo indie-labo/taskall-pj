@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, query, orderBy, doc, deleteDoc } from "firebase/firestore";
 import { db } from '@/lib/firebase';
 import { TableSideView } from './index';
 import '@/assets/css/style.css';
@@ -9,6 +9,7 @@ import iconPlus from '@/assets/img/icon_plus.png';
 import iconClose from '@/assets/img/icon_close.png';
 
 interface Task {
+  id     : string;
   task   : string;
   date   : string;
   assign : Array<string>;
@@ -39,7 +40,7 @@ const TableView: React.FC = () => {
   // ---------------------------------------------------------------
   // FireStoreの"tasks"コレクションの監視とState管理
   useEffect(() => {
-    const unsubscribe = onSnapshot(collection(db, "tasks"), (querySnapshot) => {
+    const unsubscribe = onSnapshot(query(collection(db, "tasks"),orderBy("create_at", "asc")), (querySnapshot) => {
       const taskList: Task[] = querySnapshot.docs.map((doc) => {
         const date = new Date(doc.data().date.seconds * 1000)
         const yyyy = `${date.getFullYear()}`;
@@ -47,6 +48,7 @@ const TableView: React.FC = () => {
         const dd = `0${date.getDate()}`.slice(-2);
         
         return {
+          id     : doc.id,
           task   : doc.data().task,
           date   : `${yyyy}/${MM}/${dd}`,
           assign : doc.data().assign,
@@ -55,7 +57,6 @@ const TableView: React.FC = () => {
           remarks: doc.data().remarks
         }
       })
-      console.log(taskList)
       setTasks(taskList)
     })
     
@@ -67,16 +68,11 @@ const TableView: React.FC = () => {
     setIsSideViewOpen((prev) => !prev);
   };
 
-  // タスクを追加する
-  const handleAddTask = (newTask: Task) => {
-    setTasks((prevData) => [...prevData, newTask]);
-  }
-
   // タスクを削除する
-  const handleDelete = (index: number) => {
+  const handleDelete = async (id: string) => {
     const confirmDelete = window.confirm("タスクを削除しますか？");
     if (confirmDelete) {
-      setTasks(prevData => prevData.filter((_, i) => i !== index));
+      await deleteDoc(doc(db, "tasks", id))
     }
   }
 
@@ -109,13 +105,13 @@ const TableView: React.FC = () => {
     setIsActive(true);
   };
 
-
   // ---------------------------------------------------------------
   return(
     <div className="p_tableView">
       {/* モーダル(TableSideView) */}
       <TableSideView 
-        isOpen = {isSideViewOpen} onClose={toggleSideView} onAddTask={handleAddTask} 
+        isOpen={isSideViewOpen}
+        onClose={toggleSideView}
         // onAssignChange = {handleAssignChange} onTagsChange = {handleTagsChange} onRemoveTag = {handleRemoveTag}
       />
 
@@ -151,7 +147,7 @@ const TableView: React.FC = () => {
                 {tasks.map((item, index) => (
                   <tr key={index.toString()} onClick={handleClickOpen}>
                     <td className="btnArea">
-                      <button className="btnDelete" onClick={() => handleDelete(index)}><img src={iconClose} alt="" /></button>
+                      <button className="btnDelete" onClick={() => handleDelete(item.id)}><img src={iconClose} alt="" /></button>
                     </td>
                     <td className="task">{item.task}</td>
                     <td className="date">{item.date}</td>

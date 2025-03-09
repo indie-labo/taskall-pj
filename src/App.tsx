@@ -17,7 +17,6 @@ const App = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log(user)
       if (user) {
         onLogin("user")
         setIsLoading(false)

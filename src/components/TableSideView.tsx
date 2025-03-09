@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { collection, addDoc, serverTimestamp, Timestamp } from "firebase/firestore"; 
+import { db } from '@/lib/firebase';
 import '@/assets/css/style.css';
 import iconClose from '@/assets/img/icon_close.png';
-
-interface AddTask {
-  task: string;
-  date: string;
-  assign: Array<string>;
-  status: string;
-  tags: Array<string>;
-  remarks: string;
-}
 
 interface TableSideViewProps {
   isOpen: boolean;
   onClose: () => void;
-  onAddTask: (task: AddTask) => void;
   // onAssignChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   // onTagsChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   // onRemoveTag: (tag: string) => void;
@@ -33,7 +25,7 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
 
   // ---------------------------------------------------------------
   // タスク追加処理
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // タスク名が空白の場合、値を送信しない
@@ -41,11 +33,18 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
       setErrorMessage('※タスク名を入力してください');
       return;
     }
-
     setErrorMessage('');
 
-    // 新しいタスクを作成し、親コンポーネントに渡す
-    props.onAddTask({ task, date, assign, status, tags, remarks });
+    const timestamp = Timestamp.fromDate(new Date(date))
+    await addDoc(collection(db, "tasks"), {
+      task,
+      status,
+      assign,
+      tags,
+      remarks,
+      date: timestamp,
+      create_at: serverTimestamp()
+    })
 
     // 入力フィールドをリセット
     setTask("");
