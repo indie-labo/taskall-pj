@@ -1,0 +1,144 @@
+.l_common {
+  min-width: 1400px;
+  display: flex;
+
+  // sidebar
+  // ========================
+  .l_side {
+    width: 200px;
+    height: 100vh;
+    background-color: #4A4E58;
+  
+    &__heading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      height: 70px;
+      color: #fff;
+      background-color: #565B67;
+    }
+  
+    &__main {
+  
+      &__list {
+        padding: 0;
+        margin: 0;
+  
+        &__item {
+          display: flex;
+
+          &:hover {
+            background-color: #33353c;
+          }
+
+          img {
+            display: block;
+            width: 16px;
+            height: 16px;
+          }
+  
+          &__text {
+            font-size: 14px;
+            padding: 10px 0 10px 40px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            color: #fff;
+  
+            &.active {
+              color: #1CA1C1;
+              background-color: #373a42;
+              border-left: 4px solid #1CA1C1;
+            }
+          }
+        }
+  
+      }
+    }
+  }
+
+  .l_mainWrap {
+    flex: 1;
+
+    // header
+    // ========================
+    .l_header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+      padding: 10px 15px;
+      background-color: #ffffff;
+    
+      &__logo {
+        display: flex;
+        align-items: center;
+    
+        &__img {
+          width: 50px;
+          height: 50px;
+          margin-right: 10px;
+        }
+      }
+    
+      &__menu {
+        display: flex;
+        align-items: center;
+      }
+    
+      &__notification {
+        position: relative;
+    
+        .btnNotification {
+          width: 20px;
+        }
+    
+        .notificationNum {
+          position: absolute;
+          top: -10px;
+          right: -5px;
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          text-align: center;
+          font-size: 12px;
+          color: #fff;
+          background-color: #FE8839;
+          border-radius: 50%;
+        }
+      }
+    
+      &__setting {
+        margin-left: 20px;
+    
+        .btnSetting {
+          width: 20px;
+        }
+      }
+    
+      &__profile {
+        margin-left: 30px;
+        background-color: #f0f0f0;
+        border-radius: 50%;
+    
+        .btnProfile {
+          width: 40px;
+        }
+      }
+    }
+
+    // mainview ・・・メインビューのスタイル
+    // ========================
+    .l_mainView {
+      height: calc(100% - 70px); //headerの高さ分だけマイナス
+      padding: 15px;
+      background-color: #EBEDF0;
+
+      &__contents {
+        background-color: #fff;
+      }
+    }
+  }
+
+}

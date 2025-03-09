@@ -1,0 +1,368 @@
+.p_tableView {
+  display: flex;
+  background-color: #EBEDF0;
+
+  // モーダル(SideViewのデザイン)
+  // ------------------------------------------------
+  &__sideView {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+
+    &.open {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    &__smoke {
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      opacity: .2;
+    }
+
+    &__contents {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 400px;
+      height: 100%;
+      padding: 20px;
+      border: 5px solid #EBEDF0;
+      background-color: #fff;
+
+      .iconClose {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-bottom: 10px;
+      }
+
+      .title {
+        margin-bottom: 15px;
+        font-size: 16px;
+      }
+
+      .inputArea {
+        .blockWrap {
+          margin-bottom: 25px;
+
+          .block {
+            margin-bottom: 20px;
+
+            &:last-of-type {
+              margin-bottom: 0;
+            }
+
+            .item {
+              font-size: 14px;
+              font-weight: bold;
+            }
+
+            .field {
+              width: 100%;
+              height: 35px;
+              padding: 5px;
+              font-size: 14px;
+              border: 1px solid #a9a9a9;
+              border-radius: 5px;
+
+              &.multiSelect {
+                height: auto;
+              }
+
+              &.textArea {
+                min-height: 4.5rem;
+              }
+            }
+
+            .selectItemWrap {
+              .selectItem {
+                margin-right: 12px;
+                font-size: 14px;
+
+                .btnRemoveItem {
+                  margin-left: 3px;
+                  font-size: 20px;
+                  font-weight: bold;
+                  color: #a9a9a9;
+                }
+              }
+            }
+          }
+        }
+
+        .btnSubmit {
+          width: 80px;
+          padding: 5px;
+          font-size: 16px;
+          font-weight: bold;
+          color: #fff;
+          background-color: #1CA1C1;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+  // ------------------------------------------------
+
+  &__taskWrap {
+    width: 80%;
+    margin-right: 10px;
+
+    &__heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 40px;
+      padding: 10px 30px;
+      background-color: #fff;
+      border-bottom: 2px solid #EBEDF0;
+  
+      &__title {
+        font-size: 16px;
+        font-weight: bold;
+      }
+  
+      &__btnWrap {
+        display: flex;
+        align-items: center;
+  
+        .btnSearch {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          margin-right: 20px;
+        }
+  
+        .btnReload {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          margin-right: 20px;
+        }
+  
+        .btnAdd {
+          display: inline-block;
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+  
+    &__list {
+      width: 100%;
+      padding: 10px 30px;
+      background-color: #fff;
+  
+      
+      &__theadContents {
+        width: 100%;
+  
+        &__title {
+          font-size: 14px;
+          font-weight: 500;
+    
+          tr {
+            th {
+              padding: 5px 10px;
+              text-align: left;
+              border-bottom: 1px solid #EBEDF0;
+            }
+            .blankSpace {
+              width: 4%;
+            }
+            .task {
+              width: 25%;
+            }
+            .date {
+              width: 12%;
+            }
+            .assign {
+              width: 14%;
+            }
+            .status {
+              width: 12%;
+            }
+            .tags {
+              width: 8%;
+            }
+            .remarks {
+              width: 100%;
+            }
+          }
+        }
+      }
+  
+      &__tbodyContents {
+        width: 100%;
+  
+        &__contents {
+          font-size: 14px;
+    
+          tr {
+            &:last-of-type {
+              td {
+                border-bottom: none;
+              }
+            }
+    
+            &:hover {
+              // cursor: pointer;
+              background-color: #f5f5f5;
+              opacity: .7;
+              font-weight: 500;
+            }
+    
+            td {
+              padding: 5px 10px;
+              text-align: left;
+              border-bottom: 1px solid #EBEDF0;
+            }
+            .btnArea {
+              width: 4%;
+              .btnDelete {
+                width: 10px;
+              }
+            }
+            .task {
+              width: 25%;
+            }
+            .date {
+              width: 12%;
+            }
+            .assign {
+              width: 14%;
+            }
+            .status {
+              width: 12%;
+            }
+            .tags {
+              width: 8%;
+            }
+            .remarks {
+              width: 100%;
+            }
+          }
+        }
+      }
+  
+      &__listOverflow {
+        max-height: calc(100vh - 192px); //他要素の高さ変える場合は減算する値の修正必要 ＊別途指定方法考え直す
+        overflow-y: auto;
+      }
+    }
+  }
+
+  &__detailWrap {
+    width: 20%;
+    background-color: #fff;
+
+    &__heading {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 40px;
+      padding: 0 15px;
+      background-color: #fff;
+      border-bottom: 2px solid #EBEDF0;
+
+      .btnWrap {
+        display: none;
+
+        &.active {
+          display: block;
+
+          .cancelButton {
+            width: 80px;
+            margin-right: 10px;
+            padding: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #1CA1C1;
+            background-color: #fff;
+            border: 1px solid #1CA1C1;
+            border-radius: 5px;
+          }
+    
+          .saveButton {
+            width: 80px;
+            padding: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #1CA1C1;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+
+    &__contents {
+      display: none;
+
+      &.active {
+        display: block;
+        padding: 20px 10px 10px;
+        font-size: 14px;
+        background-color: #fff;
+
+        .inputArea {
+          .blockWrap {
+            margin-bottom: 25px;
+
+            .block {
+              margin-bottom: 20px;
+
+              &:last-of-type {
+                margin-bottom: 0;
+              }
+
+              .item {
+                font-size: 14px;
+                font-weight: bold;
+              }
+
+              .field {
+                width: 100%;
+                height: 35px;
+                padding: 5px;
+                font-size: 14px;
+                border: 1px solid #a9a9a9;
+                border-radius: 5px;
+
+                &.multiSelect {
+                  height: auto;
+                }
+
+                &.textArea {
+                  min-height: 4.5rem;
+                }
+              }
+
+              .selectItemWrap {
+                .selectItem {
+                  margin-right: 12px;
+                  font-size: 14px;
+  
+                  .btnRemoveItem {
+                    margin-left: 3px;
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: #a9a9a9;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
