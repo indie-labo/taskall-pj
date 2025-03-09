@@ -1,0 +1,114 @@
+.p_tableView {
+  background-color: #EBEDF0;
+}
+.p_tableView__heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 40px;
+  padding: 10px 30px;
+  background-color: #fff;
+  border-bottom: 2px solid #EBEDF0;
+}
+.p_tableView__heading__title {
+  font-size: 16px;
+  font-weight: bold;
+}
+.p_tableView__heading__iconWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.p_tableView__heading__iconWrap .iconSearch {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+}
+.p_tableView__heading__iconWrap .iconReload {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+}
+.p_tableView__heading__iconWrap .iconPlus {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+}
+.p_tableView__list {
+  width: 100%;
+  padding: 10px 30px;
+  background-color: #fff;
+}
+.p_tableView__list__title {
+  font-size: 14px;
+  font-weight: 500;
+}
+.p_tableView__list__title tr th {
+  padding: 5px;
+  text-align: left;
+  border-bottom: 1px solid #EBEDF0;
+}
+.p_tableView__list__title tr .task {
+  width: 30%;
+}
+.p_tableView__list__title tr .date {
+  width: 15%;
+}
+.p_tableView__list__title tr .tag {
+  width: 10%;
+}
+.p_tableView__list__title tr .status {
+  width: 10%;
+}
+.p_tableView__list__title tr .notes {
+  width: 100%;
+}
+.p_tableView__list__title ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.p_tableView__list__title ul li {
+  padding: 5px;
+  text-align: left;
+  border-bottom: 1px solid #EBEDF0;
+  list-style: none;
+}
+.p_tableView__list__title ul .task {
+  width: 30%;
+}
+.p_tableView__list__title ul .date {
+  width: 15%;
+}
+.p_tableView__list__title ul .tag {
+  width: 10%;
+}
+.p_tableView__list__title ul .status {
+  width: 10%;
+}
+.p_tableView__list__title ul .notes {
+  width: 100%;
+}
+.p_tableView__list__contents {
+  font-size: 14px;
+}
+.p_tableView__list__contents tr:last-of-type td {
+  border-bottom: none;
+}
+.p_tableView__list__contents tr td {
+  padding: 5px;
+  text-align: left;
+  border-bottom: 1px solid #EBEDF0;
+}
+/*# sourceMappingURL=tableview.css.map */
