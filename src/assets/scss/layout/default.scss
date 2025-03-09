@@ -1,0 +1,68 @@
+// リセットcss
+//=============================================
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+
+html {
+  cursor: default;
+  line-height: 1.4;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  -webkit-tap-highlight-color: transparent;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  word-break: break-word;
+}
+
+// body {
+// }
+
+h1 {
+  font-size: 32px;
+}
+
+// p {
+// }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    opacity: .7;
+  }
+}
+
+table {
+  border-spacing: 0;
+}
