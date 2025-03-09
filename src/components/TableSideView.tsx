@@ -15,10 +15,13 @@ interface TableSideViewProps {
   isOpen: boolean;
   onClose: () => void;
   onAddTask: (task: AddTask) => void;
+  // onAssignChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  // onTagsChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  // onRemoveTag: (tag: string) => void;
 }
 
 const TableSideView: React.FC<TableSideViewProps> = (props) => {
-  // タスク追加時のstate管理
+  // 新規タスク追加時のstate管理
   const [task, setTask] = useState("");
   const [date, setDate] = useState("");
   const [assign, setAssign] = useState<string[]>([]);
@@ -27,19 +30,13 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
   const [remarks, setRemarks] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-// assignとtagsに入力された値を配列に変換
-  const handleAssignChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAssign(e.target.value.split(","));
-  };
-  const handleTagsChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setTags(Array.from(e.target.selectedOptions, (option) => option.value));
-  };
 
-  // タスク追加時、jsonに値を送る処理
+  // ---------------------------------------------------------------
+  // タスク追加処理
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // 空白の場合、値を送信しない
+    // タスク名が空白の場合、値を送信しない
     if (!task ) {
       setErrorMessage('※タスク名を入力してください');
       return;
@@ -76,6 +73,28 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
     };
   }, [props.onClose]);
 
+  // 担当者選択の処理
+  const handleAssignChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValues = Array.from(e.target.selectedOptions, (option) => option.value);
+    setAssign((prevAssign) => [...new Set([...prevAssign, ...selectedValues])]);
+  };
+  // 選択中の担当者を削除する
+  const handleRemoveAssign = (assign: string) => {
+    setAssign((prevAssign) => prevAssign.filter((t) => t !== assign));
+  };
+
+  // タグ選択の処理
+  const handleTagsChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValues = Array.from(e.target.selectedOptions, (option) => option.value);
+    setTags((prevTags) => [...new Set([...prevTags, ...selectedValues])]);
+  };
+  // 選択中のタグを削除する
+  const handleRemoveTag = (tag: string) => {
+    setTags((prevTags) => prevTags.filter((t) => t !== tag));
+  };
+
+
+  // ---------------------------------------------------------------
   return(
     <div id="sideView" className={`p_tableView__sideView ${props.isOpen ? "open" : ""}`}>
       <div className="p_tableView__sideView__smoke"></div>
@@ -98,7 +117,21 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
 
             <li className="block">
               <p className="item">*担当者</p>
-              <input className="field" type="text" value={assign.join(",")} onChange={handleAssignChange} />
+              <select className="field multiSelect" multiple value={assign} onChange={handleAssignChange}>
+                <option value="hoge">hoge</option>
+                <option value="fuga">fuga</option>
+                <option value="piyo">piyo</option>
+              </select>
+
+              {/* 選択中のタグを表示 */}
+              <div className="selectItemWrap">
+                {assign.map((name) => (
+                  <span className="selectItem" key={name}>
+                    {name}
+                    <button className="btnRemoveItem" onClick={() => handleRemoveAssign(name)}> ×</button>
+                  </span>
+                ))}
+              </div>
             </li>
 
             <li className="block">
@@ -113,12 +146,21 @@ const TableSideView: React.FC<TableSideViewProps> = (props) => {
 
             <li className="block">
               <p className="item">*タグ</p>
-              <select className="field" value={tags.join(",")} onChange={handleTagsChange}>
-                <option value=""></option>
+              <select className="field multiSelect" multiple value={tags} onChange={handleTagsChange}>
                 <option value="work">work</option>
                 <option value="private">private</option>
                 <option value="other">other</option>
               </select>
+
+              {/* 選択中のタグを表示 */}
+              <div className="selectItemWrap">
+                {tags.map((tag) => (
+                  <span className="selectItem" key={tag}>
+                    {tag}
+                    <button className="btnRemoveItem" onClick={() => handleRemoveTag(tag)}> ×</button>
+                  </span>
+                ))}
+              </div>
             </li>
 
             <li className="block">
